@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ae6e6c3a5c314d948b02de173b0713a7
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/TimelineRangeLooper/TimelineRangeLooperDef.asmdef
+  uploadId: 572188

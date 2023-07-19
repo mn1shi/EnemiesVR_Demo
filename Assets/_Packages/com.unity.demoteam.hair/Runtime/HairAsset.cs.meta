@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: df302c2b7a2b66240b40412f9a662a10
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairAsset.cs
+  uploadId: 572188

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c2e6e7ce14b90384ca5c94f9bdd5b906
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/LICENSE.md
+  uploadId: 572188

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 46197ab386275dc4092c5f931a52e72f
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Texture-Full.json
+  uploadId: 572188

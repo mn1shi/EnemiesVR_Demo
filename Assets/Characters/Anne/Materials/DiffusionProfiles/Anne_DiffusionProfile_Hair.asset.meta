@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 64ec81b691553ea4698e8d8443ef32d7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/DiffusionProfiles/Anne_DiffusionProfile_Hair.asset
+  uploadId: 572188

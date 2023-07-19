@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f85861c500e4d1545bbd8c4f48b2d815
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Volume_final shot.asset
+  uploadId: 572188

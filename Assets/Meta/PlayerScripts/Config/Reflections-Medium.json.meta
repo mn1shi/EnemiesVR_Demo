@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7642d20a8bbdf3f4983d19b8f47a47c5
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Reflections-Medium.json
+  uploadId: 572188

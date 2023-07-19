@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d94d5f864a1479e4d95a97301d28f9bc
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/Shaders/CalculateTangents.compute
+  uploadId: 572188

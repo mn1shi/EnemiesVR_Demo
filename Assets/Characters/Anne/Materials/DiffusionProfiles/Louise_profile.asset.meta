@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b38223ddf2306394181cf901f466d22c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/DiffusionProfiles/Louise_profile.asset
+  uploadId: 572188

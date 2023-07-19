@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5853bc07fec8d9a4a91d0b1edf74b78c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Drapes/Drapes_white_lace_02-raytraced shadows.mat
+  uploadId: 572188

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b715e747663c9f84290a6ce84fb109c4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Editor/PropertyDrawers/RenderingLayerMaskDrawer.cs
+  uploadId: 572188

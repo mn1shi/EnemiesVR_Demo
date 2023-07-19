@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fa479feefb1ab8f4583b28f136947979
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/DLSS-MaximumPerformance.json
+  uploadId: 572188

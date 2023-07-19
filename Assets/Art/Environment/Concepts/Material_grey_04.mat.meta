@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 76dda98fa9cea7d418ce9b3e34172332
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Concepts/Material_grey_04.mat
+  uploadId: 572188

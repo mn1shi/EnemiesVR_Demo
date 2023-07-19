@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 14e1ca5890ca23842a0b6af3ef8c9c01
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Column_01/Column_Thin.mat
+  uploadId: 572188

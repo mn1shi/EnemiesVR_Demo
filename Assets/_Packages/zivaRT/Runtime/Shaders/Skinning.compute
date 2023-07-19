@@ -1,0 +1,46 @@
+//
+// Skinning
+//
+
+#pragma kernel Skinning
+
+// Dynamic inputs:
+StructuredBuffer<float3> preskinningPositions;
+
+// Static inputs:
+uint totalNumSkinnedPositions;
+
+// Sparse matrix of skinning weights:
+StructuredBuffer<uint> influenceStarts;
+StructuredBuffer<uint> influenceIndices;
+StructuredBuffer<float> weights;
+
+// Transforms must be given relative to their rest pose.
+StructuredBuffer<float3x4> jointTransforms;
+
+// Outputs:
+RWStructuredBuffer<float3> skinnedPositions;
+
+[numthreads(64, 1, 1)] void Skinning(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint vertIdx = dtid.x;
+
+    if (vertIdx >= totalNumSkinnedPositions) return;
+
+    // Lookup bone transform influences.
+    uint influenceStart = influenceStarts[vertIdx];
+    uint influenceEnd = influenceStarts[vertIdx + 1];
+
+    float3x4 blendedTransform = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    for (uint j = influenceStart; j < influenceEnd; ++j)
+    {
+        uint jointIdx = influenceIndices[j];
+        float3x4 transform = jointTransforms[jointIdx];
+        float weight = weights[j];
+
+        blendedTransform += transform * weight;
+    }
+
+    skinnedPositions[vertIdx] = mul(blendedTransform, float4(preskinningPositions[vertIdx], 1));
+}

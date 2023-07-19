@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c7912e2b6bcc5c8468290c1e54e1bd6d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Samples~/HairSample/Prefabs/Lights.prefab
+  uploadId: 572188

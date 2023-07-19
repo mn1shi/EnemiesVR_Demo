@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 080bf24a9ec88794793aaa63cefcf353
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Lens Flare Presets/LensFlarePresets/Sun_Glare.asset
+  uploadId: 572188

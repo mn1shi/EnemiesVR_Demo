@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ceb4f00d6753f854597e4733ca5f4b3a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Animations/Chess_pieces/new/chess_pieces_mat_white.mat
+  uploadId: 572188

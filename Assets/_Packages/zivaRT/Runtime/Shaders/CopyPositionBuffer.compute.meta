@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ad43842d082064b4396414daadefb4cb
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/Shaders/CopyPositionBuffer.compute
+  uploadId: 572188

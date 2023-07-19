@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c479fff5aabc1504ea843ba83773d48a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Materials/Substance/Line_cells/Cell_material_Tube_Smooth.mat
+  uploadId: 572188

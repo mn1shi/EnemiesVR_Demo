@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3cf2e9c9d73a8e34f9f6918bf830ee9f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Materials/Substance/Line_cells/Cell_material_Tube_Tunnel.mat
+  uploadId: 572188

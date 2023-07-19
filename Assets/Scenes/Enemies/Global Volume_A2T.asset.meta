@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 86d3f427f043ec640b3c1b646d0ec4ae
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Global Volume_A2T.asset
+  uploadId: 572188

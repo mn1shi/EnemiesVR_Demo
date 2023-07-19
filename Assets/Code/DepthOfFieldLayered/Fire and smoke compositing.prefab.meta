@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1f3dcb03586ea124cb844672c70e71f9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/DepthOfFieldLayered/Fire and smoke compositing.prefab
+  uploadId: 572188

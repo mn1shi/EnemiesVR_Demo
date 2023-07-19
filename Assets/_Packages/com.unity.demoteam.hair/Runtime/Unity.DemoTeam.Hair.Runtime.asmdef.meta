@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f9dedde5eec30c2468e14d8a7b14626e
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/Unity.DemoTeam.Hair.Runtime.asmdef
+  uploadId: 572188

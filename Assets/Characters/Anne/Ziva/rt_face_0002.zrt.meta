@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: e643b1ac2618e6c49a3b7ffbb28872dd
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: ae34869c800390745bc13533bff81869, type: 3}
+  <LinkedMesh>k__BackingField: {fileID: 919132149155446097, guid: e18144fa8b4cab843a0be9bd6769e592,
+    type: 3}
+  <ScaleImportedZivaUsingLinkedMesh>k__BackingField: 1
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Ziva/rt_face_0002.zrt
+  uploadId: 572188

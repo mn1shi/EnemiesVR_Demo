@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 77cfbe8cc25fb954b97fb5f99cb1a5b7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/ZivaRTRig.cs
+  uploadId: 572188

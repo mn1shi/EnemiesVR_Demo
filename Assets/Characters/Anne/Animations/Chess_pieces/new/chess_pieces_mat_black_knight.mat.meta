@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8418760a9e112614aba0ee458405f2ab
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Animations/Chess_pieces/new/chess_pieces_mat_black_knight.mat
+  uploadId: 572188

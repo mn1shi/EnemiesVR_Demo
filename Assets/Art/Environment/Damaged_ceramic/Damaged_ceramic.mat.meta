@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0a4248ac82c112f40a52026e222eab6c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Damaged_ceramic/Damaged_ceramic.mat
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 795a03873cc2b3e4a97878d4b7d00aca
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Materials/Eyebrows_01.mat
+  uploadId: 572188

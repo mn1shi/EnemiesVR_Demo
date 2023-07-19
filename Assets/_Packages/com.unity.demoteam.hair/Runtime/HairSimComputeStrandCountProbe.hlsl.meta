@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 926f6ef7e8c1c9e4090d3713cef0b5de
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairSimComputeStrandCountProbe.hlsl
+  uploadId: 572188

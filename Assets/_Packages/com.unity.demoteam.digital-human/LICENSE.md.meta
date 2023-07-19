@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a4345fccf33025d43bd8f021bc7e46d0
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/LICENSE.md
+  uploadId: 572188

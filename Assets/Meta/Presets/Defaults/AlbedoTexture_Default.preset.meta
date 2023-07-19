@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7a99f8aa944efe94cb9bd74562b7d5f9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/Presets/Defaults/AlbedoTexture_Default.preset
+  uploadId: 572188

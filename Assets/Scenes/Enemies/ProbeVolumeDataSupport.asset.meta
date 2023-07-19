@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: afb48407050f28341acba5467b6eabb2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/ProbeVolumeDataSupport.asset
+  uploadId: 572188

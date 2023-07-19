@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5dc023c3ebb421f46b26331855610034
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/SSR-RT-High Profile.asset
+  uploadId: 572188

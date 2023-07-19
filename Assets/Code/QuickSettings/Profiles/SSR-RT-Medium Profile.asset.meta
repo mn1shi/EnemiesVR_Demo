@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ede4324421eb0b144bc3254330de2efc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/SSR-RT-Medium Profile.asset
+  uploadId: 572188

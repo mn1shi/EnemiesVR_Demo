@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9303d565bd8aa6948ba775e843320e4d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2655988077585873504
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/Presets/UtilityTexture.preset
+  uploadId: 572188

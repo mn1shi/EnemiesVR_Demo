@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aa412999594a2cc45a19354c66f58376
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/AttachmentData/Anne_Head_SkinAttachmentData.asset
+  uploadId: 572188

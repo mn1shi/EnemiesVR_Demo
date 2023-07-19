@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 96d979103255faf49b2cf1c3de8cccfe
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Lens Flare Presets/SampleScene/Scripts/HDRPSamples.asmdef
+  uploadId: 572188

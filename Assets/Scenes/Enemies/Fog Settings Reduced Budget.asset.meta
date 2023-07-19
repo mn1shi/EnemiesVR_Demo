@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 89bf9360a97c1db45bc01be78b2aaea1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Fog Settings Reduced Budget.asset
+  uploadId: 572188

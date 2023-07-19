@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 67c1c3052a11d96468052c7d5f33a0cb
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/CharacterLightSetups/Character Lighting 01.prefab
+  uploadId: 572188

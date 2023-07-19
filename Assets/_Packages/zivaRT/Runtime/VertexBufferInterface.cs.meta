@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d2e084ef429bc5a4e80ecd7f1f2d18db
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/VertexBufferInterface.cs
+  uploadId: 572188

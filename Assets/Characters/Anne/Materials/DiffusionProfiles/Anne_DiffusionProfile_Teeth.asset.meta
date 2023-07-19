@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 090a0a43697390f43b324a1790b99e08
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/DiffusionProfiles/Anne_DiffusionProfile_Teeth.asset
+  uploadId: 572188

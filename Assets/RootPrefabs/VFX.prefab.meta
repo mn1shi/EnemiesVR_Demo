@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 483897ad4b981644db48161c2e411440
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/RootPrefabs/VFX.prefab
+  uploadId: 572188

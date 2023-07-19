@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5ba122f8835355c429811355c3a2e8c2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Materials/Gold 3_Tunnel.mat
+  uploadId: 572188

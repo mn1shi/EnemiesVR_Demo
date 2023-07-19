@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6e058d123672f674799fd1072e73d6d1
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairSimComputeRoots.shader
+  uploadId: 572188

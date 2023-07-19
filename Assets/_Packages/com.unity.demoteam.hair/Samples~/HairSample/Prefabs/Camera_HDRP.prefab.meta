@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e733d904bfa68ac449bd39236b4c8d72
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Samples~/HairSample/Prefabs/Camera_HDRP.prefab
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 35f1c7dc8225ec746b0d9fa0eeb403ac
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/RTReflections-High.asset
+  uploadId: 572188

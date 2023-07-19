@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d2e3b0fe71dfec34e9f103c73e6b5409
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/VFX/Scripts/GlobalShaderTimelineProperties.cs
+  uploadId: 572188

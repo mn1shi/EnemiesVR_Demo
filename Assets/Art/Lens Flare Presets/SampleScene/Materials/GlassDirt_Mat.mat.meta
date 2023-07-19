@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5dd5676b928884d4da35f5e8b963443d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Lens Flare Presets/SampleScene/Materials/GlassDirt_Mat.mat
+  uploadId: 572188

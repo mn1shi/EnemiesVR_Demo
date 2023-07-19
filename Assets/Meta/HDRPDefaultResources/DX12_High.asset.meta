@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6fa8f6edcd853254f949311540326eab
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/HDRPDefaultResources/DX12_High.asset
+  uploadId: 572188

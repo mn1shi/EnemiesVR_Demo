@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 81399b7c54d42a949b053d580350125d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Exterior/SpeedTree/Trees/Main_Bark_LOD1.mat
+  uploadId: 572188

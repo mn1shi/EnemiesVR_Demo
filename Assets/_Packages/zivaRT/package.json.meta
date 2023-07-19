@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2ef60dd66cfa21d45af3bdc42b162a64
+PackageManifestImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/package.json
+  uploadId: 572188

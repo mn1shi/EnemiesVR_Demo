@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e80d3da9265e2c144bd85f26abf3bc9d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Editor/FlatBuffers/IFlatbufferObject.cs
+  uploadId: 572188

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: fd9eaf22a5a146cbbbb76fd1e21ac5a2
+timeCreated: 1666555629
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/OverrideBakedLightingTransform/Shaders/OverrideBaking.hlsl
+  uploadId: 572188

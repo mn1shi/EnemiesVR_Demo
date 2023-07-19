@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fa2dc0bb5e32f0c4791d96dd25f8a7e8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Volume_02 Profile.asset
+  uploadId: 572188

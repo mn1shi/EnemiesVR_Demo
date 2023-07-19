@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7bdd7e62f7ce5f241bfdc395007c4e79
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Prefabs/Lights_SpaceTunnel.prefab
+  uploadId: 572188

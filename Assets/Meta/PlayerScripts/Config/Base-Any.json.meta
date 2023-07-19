@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 706cb780819d7d54da0dc83c4b94fad6
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Base-Any.json
+  uploadId: 572188

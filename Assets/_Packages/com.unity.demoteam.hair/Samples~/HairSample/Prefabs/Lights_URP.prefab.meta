@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2b394c264c59e084e8bef700ec3a3027
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Samples~/HairSample/Prefabs/Lights_URP.prefab
+  uploadId: 572188

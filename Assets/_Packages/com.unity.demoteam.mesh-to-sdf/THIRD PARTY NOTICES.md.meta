@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b50af1a890d9bf449a6a7351b65097c4
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.mesh-to-sdf/THIRD PARTY NOTICES.md
+  uploadId: 572188

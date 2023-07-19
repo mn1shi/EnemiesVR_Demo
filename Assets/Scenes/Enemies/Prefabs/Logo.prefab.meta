@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b7c0a2ab3775a9c4884acb0f8a52c89f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Prefabs/Logo.prefab
+  uploadId: 572188

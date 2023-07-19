@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 31a16128846a440469e83615401c10a6
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/DepthOfFieldLayered/Resources/DepthOfFieldGather.compute
+  uploadId: 572188

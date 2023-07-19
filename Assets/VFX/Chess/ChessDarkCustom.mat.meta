@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 09ca3b9fcbc30e643b98eec6182322ec
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/VFX/Chess/ChessDarkCustom.mat
+  uploadId: 572188

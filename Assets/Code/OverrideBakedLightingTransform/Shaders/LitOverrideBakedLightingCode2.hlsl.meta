@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c5761e3d36fe23d4eb11540ff1c7e752
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/OverrideBakedLightingTransform/Shaders/LitOverrideBakedLightingCode2.hlsl
+  uploadId: 572188

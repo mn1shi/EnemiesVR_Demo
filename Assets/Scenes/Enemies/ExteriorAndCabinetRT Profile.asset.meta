@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 62b0ba5d6b98ce24fb1ab81b6dc5555b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/ExteriorAndCabinetRT Profile.asset
+  uploadId: 572188

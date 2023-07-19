@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c7cc01ad4913bb845b6a4a23161bd3c3
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/Shaders/ComputeMotionVectors.compute
+  uploadId: 572188

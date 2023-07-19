@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 83c57df5165766645b8daa069736c9e8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/UI/UISetup.prefab
+  uploadId: 572188

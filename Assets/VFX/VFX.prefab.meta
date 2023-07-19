@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ff4f3014eee4902459fed54ebdb5d218
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/VFX/VFX.prefab
+  uploadId: 572188

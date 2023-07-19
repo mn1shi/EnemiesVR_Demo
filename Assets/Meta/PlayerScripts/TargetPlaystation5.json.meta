@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: de551aec4a4e84347801d7ac8d6642dd
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/TargetPlaystation5.json
+  uploadId: 572188

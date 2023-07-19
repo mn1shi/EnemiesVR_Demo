@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0946cd7093f3a0343b0173ea67822316
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Timelines/TL_VFX_V4.playable
+  uploadId: 572188

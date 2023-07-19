@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 616f82bcb6a0e7a409ea3552183e1e1f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/DisableNearBlur.prefab
+  uploadId: 572188

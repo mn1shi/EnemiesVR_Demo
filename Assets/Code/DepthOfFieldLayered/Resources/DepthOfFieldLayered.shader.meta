@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f06b0a6caf5ffab41b11b2b0e0cdb410
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/DepthOfFieldLayered/Resources/DepthOfFieldLayered.shader
+  uploadId: 572188

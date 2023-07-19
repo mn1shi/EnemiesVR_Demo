@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f2ee08e51e3ce52438c47944c5a0af7f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/DynamicGeometryControlTrack/DynamicGeometryControlTrackAsset.cs
+  uploadId: 572188

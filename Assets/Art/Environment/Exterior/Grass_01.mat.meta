@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 095a7b28e58b055458dcc92a2118256c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Exterior/Grass_01.mat
+  uploadId: 572188

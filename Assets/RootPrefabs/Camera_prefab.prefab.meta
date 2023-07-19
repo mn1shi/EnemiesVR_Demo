@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a6d78eef1557af14fa599926592f12e5
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/RootPrefabs/Camera_prefab.prefab
+  uploadId: 572188

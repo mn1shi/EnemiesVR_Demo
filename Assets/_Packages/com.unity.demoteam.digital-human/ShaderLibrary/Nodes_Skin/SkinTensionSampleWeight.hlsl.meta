@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 59be45f5224ef9546bff719460fcaf02
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/ShaderLibrary/Nodes_Skin/SkinTensionSampleWeight.hlsl
+  uploadId: 572188

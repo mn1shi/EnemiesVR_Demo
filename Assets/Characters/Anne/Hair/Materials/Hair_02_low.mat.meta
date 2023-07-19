@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 195bcfbe59248324e8c78786c62320e5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Materials/Hair_02_low.mat
+  uploadId: 572188

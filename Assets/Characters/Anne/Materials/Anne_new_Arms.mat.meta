@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f570e04cdf18951448a2e251fb489a98
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/Anne_new_Arms.mat
+  uploadId: 572188

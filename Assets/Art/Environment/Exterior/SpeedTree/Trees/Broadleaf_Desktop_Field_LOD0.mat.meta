@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cd758e86d1859ef4da98419c264c61bf
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Exterior/SpeedTree/Trees/Broadleaf_Desktop_Field_LOD0.mat
+  uploadId: 572188

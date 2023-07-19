@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3b02b73523c021c43836d3c7653c80a8
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Shaders/HairApproximateVolume.hlsl
+  uploadId: 572188

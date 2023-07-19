@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 00b64cd34995cc24ab0ddb93602fd3d7
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Lighting-Low.json
+  uploadId: 572188

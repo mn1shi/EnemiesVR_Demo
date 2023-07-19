@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 0fbcb0951b100f54b85fced1472226ce
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_CompositeShader: {fileID: 4800000, guid: f06b0a6caf5ffab41b11b2b0e0cdb410, type: 3}
+  - m_DepthOfFieldKernel: {fileID: 7200000, guid: 7869415cc3e4eaa4d82ac21a752a2780,
+      type: 3}
+  - m_DepthOfFieldGather: {fileID: 7200000, guid: 31a16128846a440469e83615401c10a6,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/DepthOfFieldLayered/DepthOfFieldLayered.cs
+  uploadId: 572188

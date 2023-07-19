@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 605684e745c36a547b27ce659c7f21fe
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Samples~/HairSample/Scenes/HairSample_URP.unity
+  uploadId: 572188

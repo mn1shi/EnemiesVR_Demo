@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6c43e8e57c5f32e479c1e120b2c63de0
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.mesh-to-sdf/README.md
+  uploadId: 572188

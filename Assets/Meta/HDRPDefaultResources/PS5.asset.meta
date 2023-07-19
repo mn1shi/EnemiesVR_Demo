@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9e620d3a6f47d7c409aee608580b4eb6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/HDRPDefaultResources/PS5.asset
+  uploadId: 572188

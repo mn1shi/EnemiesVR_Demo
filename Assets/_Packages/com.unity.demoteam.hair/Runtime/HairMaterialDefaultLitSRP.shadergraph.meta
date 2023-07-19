@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e28e8d02189f3d549a2682c06f7ab03d
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairMaterialDefaultLitSRP.shadergraph
+  uploadId: 572188

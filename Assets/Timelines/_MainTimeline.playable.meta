@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 77ae7fb89dbcc364ea5eb943ed1d0594
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Timelines/_MainTimeline.playable
+  uploadId: 572188

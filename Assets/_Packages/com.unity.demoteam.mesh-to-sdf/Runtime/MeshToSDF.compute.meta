@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 21a034c7a3ab6be46873a82e0d02ec7b
+ComputeShaderImporter:
+  externalObjects: {}
+  currentAPIMask: 4
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.mesh-to-sdf/Runtime/MeshToSDF.compute
+  uploadId: 572188

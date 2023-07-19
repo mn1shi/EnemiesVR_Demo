@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 70877a63ccfd7e443a10adaa8cef90cc
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/OverrideHairSolverData/Editor/OverrideHairSolverDataEditorAssemblyDef.asmdef
+  uploadId: 572188

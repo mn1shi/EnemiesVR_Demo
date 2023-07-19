@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6f175c58d1d6ba34685f24b62fcb0a31
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Prefabs/TunnelCameras.prefab
+  uploadId: 572188

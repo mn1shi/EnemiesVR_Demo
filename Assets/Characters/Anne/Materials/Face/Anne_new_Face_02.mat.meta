@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c678ab54232c74e44a272ba1b693a1e0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/Face/Anne_new_Face_02.mat
+  uploadId: 572188

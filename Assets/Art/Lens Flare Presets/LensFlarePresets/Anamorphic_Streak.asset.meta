@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c722e8b19b8ea7f44a63874c0e9e9a40
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Lens Flare Presets/LensFlarePresets/Anamorphic_Streak.asset
+  uploadId: 572188

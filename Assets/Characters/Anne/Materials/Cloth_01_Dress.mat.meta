@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9cb64b93c2de9e748976fff9a38fc877
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/Cloth_01_Dress.mat
+  uploadId: 572188

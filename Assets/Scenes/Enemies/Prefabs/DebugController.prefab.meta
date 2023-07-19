@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 33fb6695151b4eb439b67f1ca1d184eb
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Prefabs/DebugController.prefab
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: eac396be18dbfe448842934280127d48
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/RTAmbientOcclusion-Medium.asset
+  uploadId: 572188

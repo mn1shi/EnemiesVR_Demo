@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ddfd3303c49316d47919707f1dff0f2f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Window/Window_glass.mat
+  uploadId: 572188

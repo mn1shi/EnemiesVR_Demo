@@ -1,0 +1,137 @@
+//
+// Calculate Tangents
+//
+
+// bool calculateTangents = true; // if false, only calculate normals
+
+
+#pragma kernel FaceTangents
+
+// Dynamic inputs
+ByteAddressBuffer inputMesh;
+
+// Static inputs
+uint totalNumFaceTangents;
+uint positionOffset;
+uint vertexStride;
+StructuredBuffer<uint3> triangles;
+StructuredBuffer<float2x2> uvToTriTransforms;
+
+// Outputs
+RWStructuredBuffer<float3> faceNormals;
+RWStructuredBuffer<float3x2> faceTangents;
+
+[numthreads(64, 1, 1)] void FaceTangents(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint faceIdx = dtid.x;
+
+    if (faceIdx >= totalNumFaceTangents) return;
+
+    // Lookup vertices of current tri.
+    int3 triangleVerts = triangles[faceIdx];
+
+    float3 v0 = asfloat(inputMesh.Load3(triangleVerts[0] * vertexStride + positionOffset));
+    float3 v1 = asfloat(inputMesh.Load3(triangleVerts[1] * vertexStride + positionOffset));
+    float3 v2 = asfloat(inputMesh.Load3(triangleVerts[2] * vertexStride + positionOffset));
+
+    // Compute area-weighted normal vector of the triangle.
+    float3 e01 = v1 - v0;
+    float3 e02 = v2 - v0;
+
+    faceNormals[faceIdx] = cross(e01, e02);
+
+    // if (calculateTangents)
+    //{
+    float2x2 uvToTri = uvToTriTransforms[faceIdx];
+    float3x2 triToLocal = float3x2(float2(e01.x, e02.x), float2(e01.y, e02.y), float2(e01.z, e02.z)); 
+    float3x2 uvToLocal = mul(triToLocal, uvToTri);
+
+    // Normalize the axes of the compute tangent basis.
+    float3 tangentX = uvToLocal._m00_m10_m20;
+    float3 tangentY = uvToLocal._m01_m11_m21;
+    tangentX = normalize(tangentX);
+    tangentY = normalize(tangentY);
+
+    faceTangents[faceIdx] = float3x2(float2(tangentX.x, tangentY.x), float2(tangentX.y, tangentY.y), float2(tangentX.z, tangentY.z)); 
+    //}
+}
+
+
+#pragma kernel VertexTangents
+
+// Dynamic inputs:
+StructuredBuffer<float3> inFaceNormals;
+StructuredBuffer<float3x2> inFaceTangents;
+
+// Static inputs
+uint totalNumVertexTangents;
+
+StructuredBuffer<uint> vertexNormalFaces;
+StructuredBuffer<uint> vertexNormalFacesStarts;
+
+StructuredBuffer<uint> vertexTangentFaces;
+StructuredBuffer<uint> vertexTangentFacesStarts;
+
+uint normalOffset;
+uint tangentOffset;
+
+//outputs
+RWByteAddressBuffer outputMesh;
+
+[numthreads(64, 1, 1)] void VertexTangents(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint vertIdx = dtid.x;
+
+    if (vertIdx >= totalNumVertexTangents) return;
+
+    uint normalFacesStartIdx = vertexNormalFacesStarts[vertIdx];
+    uint normalFacesEndIdx = vertexNormalFacesStarts[vertIdx + 1];
+
+    float3 vertexNormal = 0;
+    for (uint i = normalFacesStartIdx; i < normalFacesEndIdx; ++i)
+    {
+        uint faceIdx = vertexNormalFaces[i];
+        vertexNormal += inFaceNormals[faceIdx];
+    }
+    vertexNormal = normalize(vertexNormal);
+
+    outputMesh.Store3(vertIdx * vertexStride + normalOffset, asuint(vertexNormal));
+
+    // if (calculateTangents)
+    //{
+    uint tangentFacesStartIdx = vertexTangentFacesStarts[vertIdx];
+    uint tangentFacesEndIdx = vertexTangentFacesStarts[vertIdx + 1];
+
+    // Accumulate face tangents associated with the current vertex.
+    float3x2 tangentSum = 0;
+    for (uint j = tangentFacesStartIdx; j < tangentFacesEndIdx; ++j)
+    {
+        int faceIdx = vertexTangentFaces[j];
+        tangentSum += inFaceTangents[faceIdx];
+    }
+    if (tangentFacesStartIdx == tangentFacesEndIdx)
+    {
+        float3 defaultTangentX = float3(1.0f, 0.0, 0.0f);
+        float3 defaultTangentY = float3(0.0f, 1.0f, 0.0f);
+        tangentSum = float3x2(float2(defaultTangentX.x, defaultTangentY.x), float2(defaultTangentX.y, defaultTangentY.y), float2(defaultTangentX.z, defaultTangentY.z));
+    }
+
+    float3 tangentX = tangentSum._m00_m10_m20;
+    float3 tangentY = tangentSum._m01_m11_m21;
+
+    // Project tangent-x vector into the plane of the vertexNormal
+    // (which is already unit-length), then normalize it.
+    tangentX = tangentX - dot(tangentX, vertexNormal) * vertexNormal;
+    tangentX = normalize(tangentX);
+
+    // We don't return a tangentY vector directly. Instead Unity reconstructs tangentY
+    // (orthonormalized against both tangentX and vertexNormal) at render-time as:
+    // cross(normal, tangent.xyz) * tangent.w
+    // Therefore, we need to set tangent.w to make this reconstruction correct.
+    float w = sign(dot(cross(vertexNormal, tangentX), tangentY));
+
+    outputMesh.Store4(vertIdx * vertexStride + tangentOffset, asuint(float4(tangentX, w)));
+    //}
+}

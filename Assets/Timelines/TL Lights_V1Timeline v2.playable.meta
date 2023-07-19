@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a012abd74bfd8db408711849547f5851
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Timelines/TL Lights_V1Timeline v2.playable
+  uploadId: 572188

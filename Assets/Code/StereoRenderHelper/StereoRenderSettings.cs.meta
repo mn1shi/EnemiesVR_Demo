@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 5445787e504440a796d161c2f839ac45
+timeCreated: 1678979398
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/StereoRenderHelper/StereoRenderSettings.cs
+  uploadId: 572188

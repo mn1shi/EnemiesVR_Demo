@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 85402e7dbef1c5c4989227ce4c390fc1
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/VFX/Smoke/SmokeFunctions.hlsl
+  uploadId: 572188

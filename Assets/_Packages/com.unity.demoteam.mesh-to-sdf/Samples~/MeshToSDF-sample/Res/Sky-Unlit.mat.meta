@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 96b7f3436aa1f6a4988dde414c10748c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.mesh-to-sdf/Samples~/MeshToSDF-sample/Res/Sky-Unlit.mat
+  uploadId: 572188

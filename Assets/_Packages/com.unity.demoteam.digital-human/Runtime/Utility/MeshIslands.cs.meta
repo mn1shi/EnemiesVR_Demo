@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 056783b0222c8e547a23da4660e8ff6e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/Runtime/Utility/MeshIslands.cs
+  uploadId: 572188

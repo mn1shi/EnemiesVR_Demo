@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1b415b0b9d054c94590ae362e7335d69
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.mesh-to-sdf/Editor/SDFTexture.shader
+  uploadId: 572188

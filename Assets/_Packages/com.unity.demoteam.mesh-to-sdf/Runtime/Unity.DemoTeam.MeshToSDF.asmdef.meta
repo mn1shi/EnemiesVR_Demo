@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b10624d713de0ea499050eed0b22b274
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.mesh-to-sdf/Runtime/Unity.DemoTeam.MeshToSDF.asmdef
+  uploadId: 572188

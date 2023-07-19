@@ -1,0 +1,26 @@
+//
+// Remap Vertices
+//
+
+#pragma kernel RemapVertices
+
+// Dynamic inputs
+StructuredBuffer<float3> inVertices;
+
+// Static inputs:
+uint totalNumRemappedVertices;
+StructuredBuffer<uint> indexMap;
+uint vertexStride;
+uint positionOffset;
+
+// Outputs:
+RWByteAddressBuffer remappedVertices;
+
+[numthreads(64, 1, 1)] void RemapVertices(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint vertIdx = dtid.x;
+
+    if (vertIdx >= totalNumRemappedVertices) return;
+    remappedVertices.Store3(vertIdx * vertexStride + positionOffset, asuint(inVertices[indexMap[vertIdx]]));
+}

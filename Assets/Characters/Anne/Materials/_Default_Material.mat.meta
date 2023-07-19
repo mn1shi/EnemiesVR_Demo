@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6f9a997411726154287af7f5e7df1dcd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/_Default_Material.mat
+  uploadId: 572188

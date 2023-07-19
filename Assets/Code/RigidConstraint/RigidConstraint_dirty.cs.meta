@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: cfb492eaa89396c4aaf8de2ef8d0c1f4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 4
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/RigidConstraint/RigidConstraint_dirty.cs
+  uploadId: 572188

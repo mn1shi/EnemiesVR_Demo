@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f4ff77a56f8f8fa4f90b3667674c0d09
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/AO-R-Medium Profile.asset
+  uploadId: 572188

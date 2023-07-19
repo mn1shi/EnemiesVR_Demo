@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c243f13602e34894290eb9dd38fbe532
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Materials/Anne_Hair_PeachFuzz.mat
+  uploadId: 572188

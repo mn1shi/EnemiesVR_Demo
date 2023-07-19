@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: aa19c1d1ecbc28f43be51dc33a2ffa95
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairMaterialDefaultUnlit.shader
+  uploadId: 572188

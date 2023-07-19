@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 836801b0f8939ef468c4fe2bc90ae0e2
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/Shaders/Utilities.hlsl
+  uploadId: 572188

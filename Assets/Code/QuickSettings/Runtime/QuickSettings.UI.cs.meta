@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: aa1fd45d8dab48aaad69925cc4e36bbf
+timeCreated: 1667062307
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Runtime/QuickSettings.UI.cs
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4082bdda38e8de14d9dd4a246526e34d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/SSGI-Low Profile.asset
+  uploadId: 572188

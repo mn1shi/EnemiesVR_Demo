@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 42bd7c0f4e7e284438dc65742d450b57
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Occlusion-High.json
+  uploadId: 572188

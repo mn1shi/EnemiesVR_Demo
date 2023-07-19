@@ -1,0 +1,922 @@
+﻿#pragma kernel KVolumeClear						F_CLEAR
+#pragma kernel KVolumeSplat						F_SPLAT
+#pragma kernel KVolumeSplatDensity				F_SPLAT
+#pragma kernel KVolumeSplatVelocityX			F_SPLAT
+#pragma kernel KVolumeSplatVelocityY			F_SPLAT
+#pragma kernel KVolumeSplatVelocityZ			F_SPLAT
+#pragma kernel KVolumeResolve					F_RESOLVE
+#pragma kernel KVolumeResolveFromRasterization	F_RESOLVE
+#pragma kernel KVolumeDivergence				F_DIVERGENCE
+#pragma kernel KVolumePressureEOS				F_PRESSURE
+#pragma kernel KVolumePressureSolve				F_PRESSURE
+#pragma kernel KVolumePressureGradient			F_PRESSURE
+#pragma kernel KVolumeStrandCountProbe			F_PROBE
+#pragma kernel KVolumeStrandCountProbeDefault	F_PROBE
+
+//----------
+// features
+
+#pragma multi_compile __ LAYOUT_INTERLEAVED
+// 0 == particles grouped by strand, i.e. root, root+1, root, root+1
+// 1 == particles grouped by index, i.e. root, root, root+1, root+1
+
+#pragma multi_compile __ VOLUME_SPLAT_CLUSTERS
+// 0 == splat weight of single particle
+// 1 == splat weight of cluster of particles
+
+#pragma multi_compile __ VOLUME_SUPPORT_CONTRACTION
+// 0 == pressure is always positive
+// 1 == negative pressure causes contraction
+
+#pragma multi_compile __ VOLUME_TARGET_INITIAL_POSE VOLUME_TARGET_INITIAL_POSE_IN_PARTICLES
+// 0 == uniform target density
+// 1 == non uniform target density
+
+//------------------
+// features derived
+
+#if VOLUME_SUPPORT_CONTRACTION
+	#define VOLUME_REST_AT_ZERO					0
+	#define VOLUME_AIR_CELL_ZERO_PRESSURE		0
+	#define VOLUME_AIR_CELL_ZERO_PRESSURE_GRAD	0
+	#define VOLUME_AIR_CELL_ZERO_DIVERGENCE		1
+	#define VOLUME_AIR_CELL_ZERO_SINK			1
+	#define VOLUME_GHOST_PRESSURE				1
+	#define VOLUME_GHOST_PRESSURE_GRAD			1
+	#define VOLUME_VOF							0
+#elif 1// no contraction
+	#define VOLUME_REST_AT_ZERO					1
+	#define VOLUME_AIR_CELL_ZERO_PRESSURE		0
+	#define VOLUME_AIR_CELL_ZERO_PRESSURE_GRAD	0
+	#define VOLUME_AIR_CELL_ZERO_DIVERGENCE		1
+	#define VOLUME_AIR_CELL_ZERO_SINK			1
+	#define VOLUME_GHOST_PRESSURE				0
+	#define VOLUME_GHOST_PRESSURE_GRAD			0
+	#define VOLUME_VOF							0
+#else// old (incorrect)
+	#define VOLUME_REST_AT_ZERO					0
+	#define VOLUME_AIR_CELL_ZERO_PRESSURE		0
+	#define VOLUME_AIR_CELL_ZERO_PRESSURE_GRAD	0
+	#define VOLUME_AIR_CELL_ZERO_DIVERGENCE		1
+	#define VOLUME_AIR_CELL_ZERO_SINK			0
+	#define VOLUME_GHOST_PRESSURE				0
+	#define VOLUME_GHOST_PRESSURE_GRAD			0
+	#define VOLUME_VOF							0
+#endif
+
+//---------
+// include
+
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+
+#define HAIRSIM_WRITEABLE_VOLUMEACCU (F_CLEAR || F_SPLAT)
+#define HAIRSIM_WRITEABLE_VOLUMEDATA (F_RESOLVE || F_DIVERGENCE || F_PRESSURE)
+#define HAIRSIM_WRITEABLE_VOLUMEPROBE (F_PROBE)
+
+#include "HairSimData.hlsl"
+#include "HairSimComputeConfig.hlsl"
+#include "HairSimComputeVolumeUtility.hlsl"
+#include "HairSimComputeSolverQuaternion.hlsl"
+
+#if F_PROBE
+#include "HairSimComputeStrandCountProbe.hlsl"
+#endif
+
+//--------
+// macros
+
+#define PARTICLE_NUM_X 64
+#define PARTICLE_NUM_Y 1
+#define PARTICLE_NUM_Z 1
+
+#define VOLUME_NUM_X 8
+#define VOLUME_NUM_Y 8
+#define VOLUME_NUM_Z 1
+
+#if VOLUME_SPLAT_CLUSTERS
+  #define CHECK_SPLAT(x)	\
+	if (x >= _SolverStrandCount * _StrandParticleCount) return;
+#else
+  #define CHECK_SPLAT(x)	\
+	if (x >= _StrandCount * _StrandParticleCount) return;
+#endif
+
+#if LAYOUT_INTERLEAVED && VOLUME_SPLAT_CLUSTERS
+  #define DECLARE_SPLAT_PARTICLE_UNCHECKED(x)	\
+	const uint particleIndex = _StrandCount * (x / _SolverStrandCount) + (x % _SolverStrandCount);
+#else
+  #define DECLARE_SPLAT_PARTICLE_UNCHECKED(x)	\
+	const uint particleIndex = x;
+#endif
+
+#define DECLARE_SPLAT_PARTICLE(x)	\
+	CHECK_SPLAT(x);					\
+	DECLARE_SPLAT_PARTICLE_UNCHECKED(x);
+
+#if PLATFORM_SUPPORTS_TEXTURE_ATOMICS
+  #define ACCUIDX uint3 
+  #define WORLDIDX_TO_ACCUIDX(idx) (idx)
+#else
+  #define ACCUIDX uint 
+  #define WORLDIDX_TO_ACCUIDX(idx) VolumeIndexToFlatIndex(idx)
+#endif
+
+//---------
+// utility
+
+uint GetParticleStrandIndex(uint particleIndex)
+{
+#if LAYOUT_INTERLEAVED
+	return particleIndex % _StrandCount;
+#else
+	return particleIndex / _StrandParticleCount;
+#endif
+}
+
+float GetParticleLODCarry(uint particleIndex)
+{
+#if VOLUME_SPLAT_CLUSTERS
+	return _LODGuideCarry[(_LODIndexHi * _StrandCount) + GetParticleStrandIndex(particleIndex)];
+#else
+	return 1.0;
+#endif
+}
+
+float GetParticleVolumeWeight(uint particleIndex)
+{
+	float L = _GroupMaxParticleInterval * _RootScale[GetParticleStrandIndex(particleIndex)];
+	float A = _GroupMaxParticleFootprint;
+	return (L * A * GetParticleLODCarry(particleIndex)) / _AllGroupsMaxParticleVolume;
+}
+
+#if F_SPLAT
+
+#define WEIGHT_BITS 16
+#define WEIGHT_MASK 0xFFFF
+
+void InterlockedAddTrilinear(HAIRSIM_VOLUMEACCU<int> volume, float value, uint3 idx0, float3 w0, float3 w1)
+{
+	const uint2 h = uint2(1, 0);
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yyy)], (int)round(value * w0.x * w0.y * w0.z));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xyy)], (int)round(value * w1.x * w0.y * w0.z));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yxy)], (int)round(value * w0.x * w1.y * w0.z));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xxy)], (int)round(value * w1.x * w1.y * w0.z));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yyx)], (int)round(value * w0.x * w0.y * w1.z));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xyx)], (int)round(value * w1.x * w0.y * w1.z));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yxx)], (int)round(value * w0.x * w1.y * w1.z));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xxx)], (int)round(value * w1.x * w1.y * w1.z));
+}
+
+void InterlockedAddTrilinearPackW(HAIRSIM_VOLUMEACCU<int> volume, float value, uint3 idx0, float3 w0, float3 w1)
+{
+	const uint2 h = uint2(1, 0);
+	const float r = (1 << SPLAT_FRACTIONAL_BITS);
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yyy)], ((int)round(value * w0.x * w0.y * w0.z) << WEIGHT_BITS) | ((uint)round(r * w0.x * w0.y * w0.z) & WEIGHT_MASK));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xyy)], ((int)round(value * w1.x * w0.y * w0.z) << WEIGHT_BITS) | ((uint)round(r * w1.x * w0.y * w0.z) & WEIGHT_MASK));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yxy)], ((int)round(value * w0.x * w1.y * w0.z) << WEIGHT_BITS) | ((uint)round(r * w0.x * w1.y * w0.z) & WEIGHT_MASK));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xxy)], ((int)round(value * w1.x * w1.y * w0.z) << WEIGHT_BITS) | ((uint)round(r * w1.x * w1.y * w0.z) & WEIGHT_MASK));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yyx)], ((int)round(value * w0.x * w0.y * w1.z) << WEIGHT_BITS) | ((uint)round(r * w0.x * w0.y * w1.z) & WEIGHT_MASK));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xyx)], ((int)round(value * w1.x * w0.y * w1.z) << WEIGHT_BITS) | ((uint)round(r * w1.x * w0.y * w1.z) & WEIGHT_MASK));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yxx)], ((int)round(value * w0.x * w1.y * w1.z) << WEIGHT_BITS) | ((uint)round(r * w0.x * w1.y * w1.z) & WEIGHT_MASK));
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xxx)], ((int)round(value * w1.x * w1.y * w1.z) << WEIGHT_BITS) | ((uint)round(r * w1.x * w1.y * w1.z) & WEIGHT_MASK));
+}
+
+void InterlockedMaxTrilinear(HAIRSIM_VOLUMEACCU<int> volume, float value, uint3 idx0, float3 w0, float3 w1)
+{
+	const uint2 h = uint2(1, 0);
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yyy)], (int)round(value * w0.x * w0.y * w0.z));
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xyy)], (int)round(value * w1.x * w0.y * w0.z));
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yxy)], (int)round(value * w0.x * w1.y * w0.z));
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xxy)], (int)round(value * w1.x * w1.y * w0.z));
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yyx)], (int)round(value * w0.x * w0.y * w1.z));
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xyx)], (int)round(value * w1.x * w0.y * w1.z));
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.yxx)], (int)round(value * w0.x * w1.y * w1.z));
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(idx0 + h.xxx)], (int)round(value * w1.x * w1.y * w1.z));
+}
+
+void InterlockedAddParticleContribution(float3 worldPos, float value, HAIRSIM_VOLUMEACCU<int> volume, float3 offset = 0.5)
+{
+#if SPLAT_TRILINEAR
+	TrilinearWeights tri = VolumeWorldToCellTrilinear(worldPos, offset);
+	InterlockedAddTrilinear(volume, value * (1 << SPLAT_FRACTIONAL_BITS), tri.idx0, tri.w0, tri.w1);
+#else
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(VolumeWorldToIndex(worldPos))], (int)round(value * (1 << SPLAT_FRACTIONAL_BITS)));
+#endif
+}
+
+void InterlockedAddParticleContributionPackW(float3 worldPos, float value, HAIRSIM_VOLUMEACCU<int> volume, float3 offset = 0.5)
+{
+#if SPLAT_TRILINEAR
+	TrilinearWeights tri = VolumeWorldToCellTrilinear(worldPos, offset);
+	InterlockedAddTrilinearPackW(volume, value * (1 << SPLAT_FRACTIONAL_BITS), tri.idx0, tri.w0, tri.w1);
+#else
+	InterlockedAdd(volume[WORLDIDX_TO_ACCUIDX(VolumeWorldToIndex(worldPos))], (int)round(value * (1 << SPLAT_FRACTIONAL_BITS)));
+#endif
+}
+
+void InterlockedMaxParticleContribution(float3 worldPos, float value, HAIRSIM_VOLUMEACCU<int> volume, float3 offset = 0.5)
+{
+#if SPLAT_TRILINEAR
+	TrilinearWeights tri = VolumeWorldToCellTrilinear(worldPos, offset);
+	InterlockedMaxTrilinear(volume, value * (1 << SPLAT_FRACTIONAL_BITS), tri.idx0, tri.w0, tri.w1);
+#else
+	InterlockedMax(volume[WORLDIDX_TO_ACCUIDX(VolumeWorldToIndex(worldPos))], (int)round(value * (1 << SPLAT_FRACTIONAL_BITS)));
+#endif
+}
+
+#endif//F_SPLAT
+
+//---------------
+// kernels clear
+
+#if F_CLEAR
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumeClear(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	ACCUIDX accuIdx = WORLDIDX_TO_ACCUIDX(worldIdx);
+
+	_AccuWeight[accuIdx] = 0;
+
+#if VOLUME_TARGET_INITIAL_POSE || VOLUME_TARGET_INITIAL_POSE_IN_PARTICLES
+	_AccuWeight0[accuIdx] = 0;
+#endif
+
+	_AccuVelocityX[accuIdx] = 0;
+	_AccuVelocityY[accuIdx] = 0;
+	_AccuVelocityZ[accuIdx] = 0;
+}
+
+#endif//F_CLEAR
+
+//---------------
+// kernels splat
+
+#if F_SPLAT
+
+[numthreads(PARTICLE_NUM_X, PARTICLE_NUM_Y, PARTICLE_NUM_Z)]
+void KVolumeSplat(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	DECLARE_SPLAT_PARTICLE(worldIdx.x);
+
+	const float3 p = _ParticlePosition[particleIndex].xyz;
+	const float3 v = _ParticleVelocity[particleIndex].xyz;
+	const float w = GetParticleVolumeWeight(particleIndex);
+
+	// splat density
+	InterlockedAddParticleContribution(p, (w), _AccuWeight);
+
+	// splat target density
+	{
+#if VOLUME_TARGET_INITIAL_POSE
+		const uint strandIndex = GetParticleStrandIndex(particleIndex);
+		const float3 p0 = _RootPosition[strandIndex].xyz;
+		const float3 r0 = QMul(_RootFrame[strandIndex], _InitialParticleOffset[particleIndex].xyz * _GroupScale);
+		InterlockedAddParticleContribution(p0 + r0, (w), _AccuWeight0);
+#elif VOLUME_TARGET_INITIAL_POSE_IN_PARTICLES
+		InterlockedMaxParticleContribution(p, (w * _ParticlePosition[particleIndex].w), _AccuWeight0);
+#endif
+	}
+
+	//TODO remap and pack according to max velocity within volume?
+	// splat velocity
+#if VOLUME_STAGGERED_GRID
+	InterlockedAddParticleContributionPackW(p, (w * v.x), _AccuVelocityX, float3(0.0, 0.5, 0.5));
+	InterlockedAddParticleContributionPackW(p, (w * v.y), _AccuVelocityY, float3(0.5, 0.0, 0.5));
+	InterlockedAddParticleContributionPackW(p, (w * v.z), _AccuVelocityZ, float3(0.5, 0.5, 0.0));
+#else
+	InterlockedAddParticleContribution(p, (w * v.x), _AccuVelocityX);
+	InterlockedAddParticleContribution(p, (w * v.y), _AccuVelocityY);
+	InterlockedAddParticleContribution(p, (w * v.z), _AccuVelocityZ);
+#endif
+}
+
+[numthreads(PARTICLE_NUM_X, PARTICLE_NUM_Y, PARTICLE_NUM_Z)]
+void KVolumeSplatDensity(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	DECLARE_SPLAT_PARTICLE(worldIdx.x);
+
+	const float3 p = _ParticlePosition[particleIndex].xyz;
+	const float3 v = _ParticleVelocity[particleIndex].xyz;
+	const float w = GetParticleVolumeWeight(particleIndex);
+
+	// splat density
+	InterlockedAddParticleContribution(p, (w), _AccuWeight);
+
+	// splat target density
+	{
+#if VOLUME_TARGET_INITIAL_POSE
+		const uint strandIndex = GetParticleStrandIndex(particleIndex);
+		const float3 p0 = _RootPosition[strandIndex].xyz;
+		const float3 r0 = QMul(_RootFrame[strandIndex], _InitialParticleOffset[particleIndex].xyz * _GroupScale);
+		InterlockedAddParticleContribution(p0 + r0, (w), _AccuWeight0);
+#elif VOLUME_TARGET_INITIAL_POSE_IN_PARTICLES
+		InterlockedMaxParticleContribution(p, (w * _ParticlePosition[particleIndex].w), _AccuWeight0);
+#endif
+	}
+}
+
+[numthreads(PARTICLE_NUM_X, PARTICLE_NUM_Y, PARTICLE_NUM_Z)]
+void KVolumeSplatVelocityX(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	DECLARE_SPLAT_PARTICLE(worldIdx.x);
+
+	const float3 p = _ParticlePosition[particleIndex].xyz;
+	const float3 v = _ParticleVelocity[particleIndex].xyz;
+	const float w = GetParticleVolumeWeight(particleIndex);
+
+	// splat velocity-x
+#if VOLUME_STAGGERED_GRID
+	InterlockedAddParticleContributionPackW(p, (w * v.x), _AccuVelocityX, float3(0.0, 0.5, 0.5));
+#else
+	InterlockedAddParticleContribution(p, (w * v.x), _AccuVelocityX);
+#endif
+}
+
+[numthreads(PARTICLE_NUM_X, PARTICLE_NUM_Y, PARTICLE_NUM_Z)]
+void KVolumeSplatVelocityY(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	DECLARE_SPLAT_PARTICLE(worldIdx.x);
+
+	const float3 p = _ParticlePosition[particleIndex].xyz;
+	const float3 v = _ParticleVelocity[particleIndex].xyz;
+	const float w = GetParticleVolumeWeight(particleIndex);
+
+	// splat velocity-y
+#if VOLUME_STAGGERED_GRID
+	InterlockedAddParticleContributionPackW(p, (w * v.y), _AccuVelocityY, float3(0.5, 0.0, 0.5));
+#else
+	InterlockedAddParticleContribution(p, (w * v.y), _AccuVelocityY);
+#endif
+}
+
+[numthreads(PARTICLE_NUM_X, PARTICLE_NUM_Y, PARTICLE_NUM_Z)]
+void KVolumeSplatVelocityZ(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	DECLARE_SPLAT_PARTICLE(worldIdx.x);
+
+	const float3 p = _ParticlePosition[particleIndex].xyz;
+	const float3 v = _ParticleVelocity[particleIndex].xyz;
+	const float w = GetParticleVolumeWeight(particleIndex);
+
+	// splat velocity-z
+#if VOLUME_STAGGERED_GRID
+	InterlockedAddParticleContributionPackW(p, (w * v.z), _AccuVelocityZ, float3(0.5, 0.5, 0.0));
+#else
+	InterlockedAddParticleContribution(p, (w * v.z), _AccuVelocityZ);
+#endif
+}
+
+#endif//F_SPLAT
+
+//-----------------
+// kernels resolve
+
+#if F_RESOLVE
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumeResolve(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	ACCUIDX accuIdx = WORLDIDX_TO_ACCUIDX(worldIdx);
+
+	const int accu_n = _AccuWeight[accuIdx];
+	const float accu_w = accu_n / (float)(1 << SPLAT_FRACTIONAL_BITS);
+
+#if DEBUG_STRAND_31_32
+	const float rho_particle = _AllGroupsDebugWeight;
+#else
+	const float rho_particle = _AllGroupsMaxParticleVolume / VolumeWorldCellVolume();
+#endif
+
+	_VolumeDensity[worldIdx] = rho_particle * accu_w;
+
+#if VOLUME_TARGET_INITIAL_POSE
+	_VolumeDensity0[worldIdx] = rho_particle * (_AccuWeight0[accuIdx] / (float)(1 << SPLAT_FRACTIONAL_BITS));
+#elif VOLUME_TARGET_INITIAL_POSE_IN_PARTICLES
+	_VolumeDensity0[worldIdx] = rho_particle * (_AccuWeight0[accuIdx] / (float)(1 << SPLAT_FRACTIONAL_BITS));
+#endif
+
+	_VolumeVelocity[worldIdx] = float4(
+		(float3(
+#if VOLUME_STAGGERED_GRID
+			_AccuVelocityX[accuIdx] >> WEIGHT_BITS,
+			_AccuVelocityY[accuIdx] >> WEIGHT_BITS,
+			_AccuVelocityZ[accuIdx] >> WEIGHT_BITS) /
+			float3(
+				max(1, _AccuVelocityX[accuIdx] & WEIGHT_MASK),
+				max(1, _AccuVelocityY[accuIdx] & WEIGHT_MASK),
+				max(1, _AccuVelocityZ[accuIdx] & WEIGHT_MASK)
+			)
+#else
+			_AccuVelocityX[accuIdx],
+			_AccuVelocityY[accuIdx],
+			_AccuVelocityZ[accuIdx]) / (float)max(1, accu_n)
+#endif
+		),
+		accu_w);
+}
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumeResolveFromRasterization(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	const float4 splat = _VolumeVelocity[worldIdx];
+	{
+#if DEBUG_STRAND_31_32
+		const float rho_particle = _AllGroupsDebugWeight;
+#else
+		const float rho_particle = _AllGroupsMaxParticleVolume / VolumeWorldCellVolume();
+#endif
+
+		_VolumeDensity[worldIdx] = rho_particle * splat.w;
+
+		if (splat.w > 0.0)
+			_VolumeVelocity[worldIdx] = float4(splat.xyz / splat.w, splat.w);
+		else
+			_VolumeVelocity[worldIdx] = 0.0;
+	}
+}
+
+#endif//F_RESOLVE
+
+//--------------------
+// kernels divergence
+
+#if F_DIVERGENCE
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumeDivergence(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	const bool3 isBoundaryLower = (worldIdx == 0);
+	const bool3 isBoundaryUpper = (worldIdx == (uint3)_VolumeCells.xyz - 1);
+
+	const uint3 worldIdxStrideX = uint3(1, 0, 0);
+	const uint3 worldIdxStrideY = uint3(0, 1, 0);
+	const uint3 worldIdxStrideZ = uint3(0, 0, 1);
+
+	const float4 v_in = _VolumeVelocity[worldIdx];
+
+#if VOLUME_VOF
+	const float min_contrib = 0.1;
+	const float max_contrib = 2.0;
+	
+	const float w_xm = clamp(_VolumeDensity[worldIdx - worldIdxStrideX], min_contrib, max_contrib);
+	const float w_ym = clamp(_VolumeDensity[worldIdx - worldIdxStrideY], min_contrib, max_contrib);
+	const float w_zm = clamp(_VolumeDensity[worldIdx - worldIdxStrideZ], min_contrib, max_contrib);
+
+	const float w_xp = clamp(_VolumeDensity[worldIdx + worldIdxStrideX], min_contrib, max_contrib);
+	const float w_yp = clamp(_VolumeDensity[worldIdx + worldIdxStrideY], min_contrib, max_contrib);
+	const float w_zp = clamp(_VolumeDensity[worldIdx + worldIdxStrideZ], min_contrib, max_contrib);
+	
+	const float vx_xm = isBoundaryLower.x ? v_in.x : _VolumeVelocity[worldIdx - worldIdxStrideX].x * w_xm;
+	const float vy_ym = isBoundaryLower.y ? v_in.y : _VolumeVelocity[worldIdx - worldIdxStrideY].y * w_ym;
+	const float vz_zm = isBoundaryLower.z ? v_in.z : _VolumeVelocity[worldIdx - worldIdxStrideZ].z * w_zm;
+
+	const float vx_xp = isBoundaryUpper.x ? v_in.x : _VolumeVelocity[worldIdx + worldIdxStrideX].x * w_xp;
+	const float vy_yp = isBoundaryUpper.y ? v_in.y : _VolumeVelocity[worldIdx + worldIdxStrideY].y * w_yp;
+	const float vz_zp = isBoundaryUpper.z ? v_in.z : _VolumeVelocity[worldIdx + worldIdxStrideZ].z * w_zp;
+#else
+  #if VOLUME_STAGGERED_GRID
+	const float vx_xm = v_in.x;
+	const float vy_ym = v_in.y;
+	const float vz_zm = v_in.z;
+  #else
+	const float vx_xm = isBoundaryLower.x ? v_in.x : _VolumeVelocity[worldIdx - worldIdxStrideX].x;
+	const float vy_ym = isBoundaryLower.y ? v_in.y : _VolumeVelocity[worldIdx - worldIdxStrideY].y;
+	const float vz_zm = isBoundaryLower.z ? v_in.z : _VolumeVelocity[worldIdx - worldIdxStrideZ].z;
+  #endif
+
+	const float vx_xp = isBoundaryUpper.x ? v_in.x : _VolumeVelocity[worldIdx + worldIdxStrideX].x;
+	const float vy_yp = isBoundaryUpper.y ? v_in.y : _VolumeVelocity[worldIdx + worldIdxStrideY].y;
+	const float vz_zp = isBoundaryUpper.z ? v_in.z : _VolumeVelocity[worldIdx + worldIdxStrideZ].z;
+#endif
+
+#if VOLUME_SQUARE_CELLS
+  #if VOLUME_STAGGERED_GRID
+	const float h = 1.0 * VolumeWorldCellSize().x;
+  #else
+	const float h = 2.0 * VolumeWorldCellSize().x;
+  #endif
+	const float div = float(
+		(vx_xp - vx_xm) +
+		(vy_yp - vy_ym) +
+		(vz_zp - vz_zm)) / h;
+#else
+	const float3 h = 2.0 * VolumeWorldCellSize().xyz;
+	const float div = float(
+		(vx_xp - vx_xm) / h.x +
+		(vy_yp - vy_ym) / h.y +
+		(vz_zp - vz_zm) / h.z);
+#endif
+
+	const float rho = _VolumeDensity[worldIdx];
+#if VOLUME_TARGET_INITIAL_POSE || VOLUME_TARGET_INITIAL_POSE_IN_PARTICLES
+	const float rho0 = _VolumeDensity0[worldIdx];
+#else
+	const float rho0 = 1.0;
+#endif
+
+#if VOLUME_AIR_CELL_ZERO_DIVERGENCE || VOLUME_AIR_CELL_ZERO_SINK
+	if (rho == 0.0)
+	{
+	#if VOLUME_AIR_CELL_ZERO_DIVERGENCE && VOLUME_AIR_CELL_ZERO_SINK
+		_VolumeDivergence[worldIdx] = 0.0;
+	#elif VOLUME_AIR_CELL_ZERO_DIVERGENCE
+	  #if VOLUME_REST_AT_ZERO
+		_VolumeDivergence[worldIdx] = 0.0 - max(0.0, rho - rho0) * (_TargetDensityFactor);
+	  #else
+		_VolumeDivergence[worldIdx] = 0.0 - (rho - rho0) * (_TargetDensityFactor);
+	  #endif
+	#else
+		_VolumeDivergence[worldIdx] = div;
+	#endif
+	}
+	else
+#endif
+	{
+	  #if VOLUME_REST_AT_ZERO
+		_VolumeDivergence[worldIdx] = min(0.0, div - (rho - rho0) * (_TargetDensityFactor));
+	  #else
+		_VolumeDivergence[worldIdx] = div - (rho - rho0) * (_TargetDensityFactor);
+	  #endif
+	}
+}
+
+#endif//F_DIVERGENCE
+
+//------------------
+// kernels pressure
+
+#if F_PRESSURE
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumePressureEOS(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	const float rho = _VolumeDensity[worldIdx];
+#if VOLUME_TARGET_INITIAL_POSE || VOLUME_TARGET_INITIAL_POSE_IN_PARTICLES
+	const float rho0 = _VolumeDensity0[worldIdx];
+#else
+	const float rho0 = 1.0;
+#endif
+
+#if VOLUME_AIR_CELL_ZERO_PRESSURE || VOLUME_AIR_CELL_ZERO_SINK
+	if (rho == 0.0)
+	{
+		_VolumePressure[worldIdx] = 0.0;
+	}
+	else
+#endif
+	{
+	  #if VOLUME_REST_AT_ZERO
+		_VolumePressure[worldIdx] = max(0.0, rho - rho0) * (_TargetDensityFactor * VolumeWorldCellSize().x * VolumeWorldCellSize().x);;
+	  #else
+		_VolumePressure[worldIdx] = (rho - rho0) * (_TargetDensityFactor * VolumeWorldCellSize().x * VolumeWorldCellSize().x);
+	  #endif
+	}
+}
+
+float GhostPressureStep(int3 index, int3 step)
+{
+	uint3 other = clamp(index + step, int3(0, 0, 0), (int3)_VolumeCells.xyz - 1);
+	
+	float rho_0 = _VolumeDensity[index];
+	float rho_1 = _VolumeDensity[other];
+	
+#if VOLUME_GHOST_PRESSURE
+	if (rho_1 == 0.0 && rho_0 > 0.0)
+	{
+		// step from volume -> air
+		float vol_0 = abs(rho_0);
+		float vol_0_r = pow((3.0 * vol_0) / (4.0 * 3.14159), 1.0 / 3.0);
+			
+		float sd_0 = -vol_0_r;
+		float sd_1 = 1.0 - vol_0_r;
+			
+		return _VolumePressure[index] * (sd_0 / sd_1);
+	}
+	else
+#endif
+	{
+		return _VolumePressure[other];
+	}
+}
+
+bool GhostPressureCell(uint3 worldIdx)
+{
+	if (_VolumeDensity[worldIdx] == 0.0)
+		return true;
+	else
+		return false;
+}
+
+float GhostPressure(float rho, float pressure, uint3 worldIdx)
+{
+	worldIdx = clamp(worldIdx, uint3(0, 0, 0), (uint3)_VolumeCells.xyz - 1);
+	
+	if (rho > 0.0 && GhostPressureCell(worldIdx))
+	{
+		float vol_0 = abs(rho);
+		float vol_0_r = pow((3.0 * vol_0) / (4.0 * 3.14159), 1.0 / 3.0);
+		
+		float theta = saturate(vol_0_r);
+		
+		return -pressure * saturate((1.0 - theta) / theta);
+	}
+	else
+	{
+		return _VolumePressure[worldIdx];
+	}
+}
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumePressureSolve(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	const float rho = _VolumeDensity[worldIdx];
+
+#if VOLUME_AIR_CELL_ZERO_PRESSURE
+	if (rho == 0.0)
+	{
+		_VolumePressureNext[worldIdx] = 0.0;
+		return;
+	}
+#endif
+	
+	// solve poisson equation for pressure using central differences
+	// https://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html
+
+	const bool3 isBoundaryLower = (worldIdx == 0);
+	const bool3 isBoundaryUpper = (worldIdx == (uint3)_VolumeCells.xyz - 1);
+	
+	const uint3 worldIdxStrideX = uint3(1, 0, 0);
+	const uint3 worldIdxStrideY = uint3(0, 1, 0);
+	const uint3 worldIdxStrideZ = uint3(0, 0, 1);
+
+	const float p_in = _VolumePressure[worldIdx];
+	
+#if VOLUME_GHOST_PRESSURE
+	const float p_xm = GhostPressure(rho, p_in, worldIdx - worldIdxStrideX);
+	const float p_ym = GhostPressure(rho, p_in, worldIdx - worldIdxStrideY);
+	const float p_zm = GhostPressure(rho, p_in, worldIdx - worldIdxStrideZ);
+
+	const float p_xp = GhostPressure(rho, p_in, worldIdx + worldIdxStrideX);
+	const float p_yp = GhostPressure(rho, p_in, worldIdx + worldIdxStrideY);
+	const float p_zp = GhostPressure(rho, p_in, worldIdx + worldIdxStrideZ);
+#else
+	const float p_xm = isBoundaryLower.x ? p_in : _VolumePressure[worldIdx - worldIdxStrideX];
+	const float p_ym = isBoundaryLower.y ? p_in : _VolumePressure[worldIdx - worldIdxStrideY];
+	const float p_zm = isBoundaryLower.z ? p_in : _VolumePressure[worldIdx - worldIdxStrideZ];
+
+	const float p_xp = isBoundaryUpper.x ? p_in : _VolumePressure[worldIdx + worldIdxStrideX];
+	const float p_yp = isBoundaryUpper.y ? p_in : _VolumePressure[worldIdx + worldIdxStrideY];
+	const float p_zp = isBoundaryUpper.z ? p_in : _VolumePressure[worldIdx + worldIdxStrideZ];
+#endif
+
+	const float b = _VolumeDivergence[worldIdx];
+	const float w = 1.0;// SOR factor [1..2]
+
+#if VOLUME_SQUARE_CELLS
+	const float h = VolumeWorldCellSize().x;
+	const float a = -(h * h);
+
+	const float pressure =
+		(1.0 - w) * p_in +
+		(w / 6.0) * float(
+			p_xm + p_xp +
+			p_ym + p_yp +
+			p_zm + p_zp +
+			a * b);
+#else
+	const float3 h = VolumeWorldCellSize().xyz;
+	const float3 a = -(h * h) / 3.0;
+
+	const float pressure =
+		(1.0 - w) * p_in +
+		(w / 6.0) * float(
+			(p_xm + p_xp + a.x * b) + 
+			(p_ym + p_yp + a.y * b) +
+			(p_zm + p_zp + a.z * b));
+#endif
+
+	_VolumePressureNext[worldIdx] = pressure;
+}
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumePressureGradient(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	const float rho = _VolumeDensity[worldIdx];
+	
+#if VOLUME_AIR_CELL_ZERO_PRESSURE_GRAD
+	if (rho == 0.0)
+	{
+		_VolumePressureGrad[worldIdx] = 0.0;
+		return;
+	}
+#endif
+
+	const bool3 isBoundaryLower = (worldIdx == 0);
+	const bool3 isBoundaryUpper = (worldIdx == (uint3)_VolumeCells.xyz - 1);
+
+	const uint3 worldIdxStrideX = uint3(1, 0, 0);
+	const uint3 worldIdxStrideY = uint3(0, 1, 0);
+	const uint3 worldIdxStrideZ = uint3(0, 0, 1);
+
+	const float p_in = _VolumePressure[worldIdx];
+
+#if VOLUME_GHOST_PRESSURE_GRAD
+	const float p_xm = GhostPressure(rho, p_in, worldIdx - worldIdxStrideX);
+	const float p_ym = GhostPressure(rho, p_in, worldIdx - worldIdxStrideY);
+	const float p_zm = GhostPressure(rho, p_in, worldIdx - worldIdxStrideZ);
+
+  #if VOLUME_STAGGERED_GRID
+	const float p_xp = p_in;
+	const float p_yp = p_in;
+	const float p_zp = p_in;
+  #else
+	const float p_xp = GhostPressure(rho, p_in, worldIdx + worldIdxStrideX);
+	const float p_yp = GhostPressure(rho, p_in, worldIdx + worldIdxStrideY);
+	const float p_zp = GhostPressure(rho, p_in, worldIdx + worldIdxStrideZ);
+  #endif
+#else
+	const float p_xm = isBoundaryLower.x ? p_in : _VolumePressure[worldIdx - worldIdxStrideX];
+	const float p_ym = isBoundaryLower.y ? p_in : _VolumePressure[worldIdx - worldIdxStrideY];
+	const float p_zm = isBoundaryLower.z ? p_in : _VolumePressure[worldIdx - worldIdxStrideZ];
+
+  #if VOLUME_STAGGERED_GRID
+	const float p_xp = p_in;
+	const float p_yp = p_in;
+	const float p_zp = p_in;
+  #else
+	const float p_xp = isBoundaryUpper.x ? p_in : _VolumePressure[worldIdx + worldIdxStrideX];
+	const float p_yp = isBoundaryUpper.y ? p_in : _VolumePressure[worldIdx + worldIdxStrideY];
+	const float p_zp = isBoundaryUpper.z ? p_in : _VolumePressure[worldIdx + worldIdxStrideZ];
+  #endif
+#endif
+	
+#if VOLUME_SQUARE_CELLS
+  #if VOLUME_STAGGERED_GRID
+	const float h = 1.0 * VolumeWorldCellSize().x;
+  #else
+	const float h = 2.0 * VolumeWorldCellSize().x;
+  #endif
+#else
+	const float3 h = 2.0 * VolumeWorldCellSize().xyz;
+#endif
+
+	const float3 diff = float3(
+		p_xp - p_xm,
+		p_yp - p_ym,
+		p_zp - p_zm) / h;
+
+	_VolumePressureGrad[worldIdx] = diff;
+}
+
+#endif//F_PRESSURE
+
+//----------------------------
+// kernels strand count probe
+
+#if F_PROBE
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumeStrandCountProbe(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	const float rho = _VolumeDensity[worldIdx];
+
+	// early out in empty cells
+	if (rho == 0.0)
+	{
+		_VolumeStrandCountProbe[worldIdx] = 0.0;
+		return;
+	}
+
+#if 1
+	_VolumeStrandCountProbe[worldIdx] = ProjectStrandCountSH_L0L1(VolumeIndexToWorld(worldIdx));
+#else
+	float coefficients[4];
+	ProjectStrandCountSH(worldIdx, coefficients);
+	_VolumeStrandCountProbe[worldIdx] = float4(
+		coefficients[0],
+		coefficients[1],
+		coefficients[2],
+		coefficients[3]);
+#endif
+}
+
+[numthreads(VOLUME_NUM_X, VOLUME_NUM_Y, VOLUME_NUM_Z)]
+void KVolumeStrandCountProbeDefault(
+	uint3 groupIdx : SV_GroupID,
+	uint3 localIdx : SV_GroupThreadID,
+	uint3 worldIdx : SV_DispatchThreadID,
+	uint threadIdx : SV_GroupIndex)
+	// SV_GroupID           execution group coords
+	// SV_GroupThreadID     thread coords within execution group
+	// SV_DispatchThreadID  thread coords (global)
+	// SV_GroupIndex        thread offset within execution group
+{
+	_VolumeStrandCountProbe[worldIdx] = 0.0;
+}
+
+#endif//F_PROBE

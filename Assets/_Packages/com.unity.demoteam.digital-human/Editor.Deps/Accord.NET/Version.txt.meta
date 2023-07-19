@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c4908ede04ad07442abef70306b2d285
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/Editor.Deps/Accord.NET/Version.txt
+  uploadId: 572188

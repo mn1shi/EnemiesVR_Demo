@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 92ecfb1aee69cf24eaaf18c4a927f14d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Anne_Facial_brows/brows_overridemesh.asset
+  uploadId: 572188

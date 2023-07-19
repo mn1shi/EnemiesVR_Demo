@@ -1,0 +1,34 @@
+{
+  "name": "com.unity.zivart-player",
+  "displayName": "ZivaRT Player",
+  "version": "0.2.0",
+  "unity": "2021.3",
+  "description": "ZivaRT (Ziva Real Time) is a machine learning technology that allows a user to produce film-quality shape deformation results in real time. In particular, the software takes in a set of representative high-quality mesh shapes and poses, and trains a machine-learning model to learn how to deform and skin the mesh. ZivaRT allows for film-quality characters to be deployed in real-time applications.\n\n",
+  "dependencies": {
+    "com.unity.burst": "1.7.2",
+    "com.unity.mathematics": "1.2.6",
+    "com.unity.modules.animation": "0.0.0"
+  },
+  "relatedPackages": {
+    "com.unity.zivart-player.tests": "0.2.0"
+  },
+  "_upm": {
+    "changelog": "### Added\n- Add a property to the ZivaRTPlayer component to control solver scheduling. Solver can be started manually \n  or based on visibility in either \"Update\" or \"LateUpdate\"\n- Add functionality to specify custom bounds for ZivaRTPlayer component \n\n### Changed\n- Ensure that target mesh is in the format expected by the \"Compute Shader\" solver\n- Shader data is now stored as a package resource instead of being serialized with ZivaRTPlayer\n- Improve \"Burst Jobs\" solver performance by using Mesh.GetVertexBuffer API to update target mesh data \n- Refactored source mesh change detection to use the custom inspector\n- Update the documentation of the \"Draw Debug Vertices\" field to better describe what it does\n- Make sure all public ZivaRT player's fields have tooltips\n\n### Fixed\n- Fix motion vectors having uninitialized values the first time a solver is run\n- Make 2022.2 the earliest version that supports the compute shader solver on Apple devices\n- Fix occasional crash and instability in AnimateExtraParametersTests\n- Fix instability in Runtime Playable Tests\n- Fix Editor errors when linked mesh is missing on imported ZivaRTPlayer component\n- Fix bounds not being calculated when using \"Compute\" solver\n- Fix target mesh not being created when the character's pivot point is outside of camera's view\n\n### Removed\n- Removed some unneeded files getting included with the package"
+  },
+  "upmCi": {
+    "footprint": "4764c0504054eac8125370f2b7a2501bc8946ec1"
+  },
+  "documentationUrl": "https://docs.unity3d.com/Packages/com.unity.zivart-player@0.2/manual/index.html",
+  "repository": {
+    "url": "https://github.cds.internal.unity3d.com/unity/com.unity.zivart-player.git",
+    "type": "git",
+    "revision": "b9e8dc7dd7a443165319b0a932e2c83fc868903c"
+  },
+  "samples": [
+    {
+      "displayName": "ZivaRT Samples",
+      "description": "ZivaRT Runtime Examples.",
+      "path": "Samples~"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c7d772f978a68984282115e9ab56d422
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/DiffusionProfiles/Anne_DiffusionProfile_Skin.asset
+  uploadId: 572188

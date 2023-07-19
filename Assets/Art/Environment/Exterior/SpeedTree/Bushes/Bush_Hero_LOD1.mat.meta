@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 156283baf8d330c418e1fbbd42ed065c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Exterior/SpeedTree/Bushes/Bush_Hero_LOD1.mat
+  uploadId: 572188

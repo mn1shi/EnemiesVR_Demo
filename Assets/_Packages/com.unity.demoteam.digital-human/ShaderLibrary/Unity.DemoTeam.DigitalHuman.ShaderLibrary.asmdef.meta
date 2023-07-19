@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e5ef2a92fd457cc4eb9f93a64c2f0d1f
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/ShaderLibrary/Unity.DemoTeam.DigitalHuman.ShaderLibrary.asmdef
+  uploadId: 572188

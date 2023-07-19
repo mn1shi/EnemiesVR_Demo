@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 600ad71dd1db49945a3f6d0d23015449
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/RTGlobalIllumination-Medium.asset
+  uploadId: 572188

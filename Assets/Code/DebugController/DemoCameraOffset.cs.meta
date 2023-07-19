@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 468d9b04d97d464495e1c53f2a153724
+timeCreated: 1666296127
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/DebugController/DemoCameraOffset.cs
+  uploadId: 572188

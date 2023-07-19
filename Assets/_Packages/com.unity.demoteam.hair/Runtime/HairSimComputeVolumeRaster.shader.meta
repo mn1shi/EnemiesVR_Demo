@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7e9119a1fe374fd45b70c831f4cc3131
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairSimComputeVolumeRaster.shader
+  uploadId: 572188

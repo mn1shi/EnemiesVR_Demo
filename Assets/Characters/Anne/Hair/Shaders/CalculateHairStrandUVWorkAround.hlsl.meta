@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c25845db2f205104198063d2fcda997d
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Shaders/CalculateHairStrandUVWorkAround.hlsl
+  uploadId: 572188

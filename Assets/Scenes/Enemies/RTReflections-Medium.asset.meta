@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8622e40ea5f802c42a2f6d4bbae23fd8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/RTReflections-Medium.asset
+  uploadId: 572188

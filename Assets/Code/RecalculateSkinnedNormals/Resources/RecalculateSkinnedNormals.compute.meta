@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 13e54074eca04e146a3763d0b4450c95
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/RecalculateSkinnedNormals/Resources/RecalculateSkinnedNormals.compute
+  uploadId: 572188

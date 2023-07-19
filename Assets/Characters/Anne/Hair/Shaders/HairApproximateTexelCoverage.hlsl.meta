@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 395044bc3f5b4994b976ba18a71ca2a2
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Shaders/HairApproximateTexelCoverage.hlsl
+  uploadId: 572188

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 17247ea7c918bee4e91652e9521e87b5
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/OverrideHairSolverData/Runtime/Resources/OverrideHairSolverDataKernels.compute
+  uploadId: 572188

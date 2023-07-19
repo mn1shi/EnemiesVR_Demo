@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ecac748cf1566cf4da4af4e398487e41
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/CharacterLightSetups/Character Lighting 01 garden.prefab
+  uploadId: 572188

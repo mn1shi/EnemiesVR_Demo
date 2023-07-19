@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e4cc4590fa23475479d8fa7994656883
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/EyelidSnapData.asset
+  uploadId: 572188

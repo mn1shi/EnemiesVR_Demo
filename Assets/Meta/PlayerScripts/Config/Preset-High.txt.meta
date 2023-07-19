@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7e0f03495ed53c04eb3857f7664a3ad9
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Preset-High.txt
+  uploadId: 572188

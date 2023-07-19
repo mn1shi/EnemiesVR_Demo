@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 29f41b4920918f147a35bda45332402e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/DisableNearBlur Profile.asset
+  uploadId: 572188

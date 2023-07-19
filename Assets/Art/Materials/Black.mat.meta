@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2d82433945684bb45af8d95a076f4048
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Materials/Black.mat
+  uploadId: 572188

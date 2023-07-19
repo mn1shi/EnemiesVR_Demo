@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 86d2a00ccd3c0464a9fe4eaa266f4615
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Concepts/Textures/Gold/Gold_details.mat
+  uploadId: 572188

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ac3c0e58c0a244b45b866d9372f82b17
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/RootPrefabs/AudioMusic.prefab
+  uploadId: 572188

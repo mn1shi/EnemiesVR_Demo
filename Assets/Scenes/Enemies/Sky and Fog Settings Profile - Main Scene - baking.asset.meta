@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 58e65d91e2f7cf2428d450e2f4bfc3d4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Sky and Fog Settings Profile - Main Scene - baking.asset
+  uploadId: 572188

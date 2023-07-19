@@ -1,0 +1,16 @@
+{
+    "name": "ZivaRT",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e784becc05930cd4c9380f0f93f547a6"
+    ],
+    "includePlatforms": [ "Editor" ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

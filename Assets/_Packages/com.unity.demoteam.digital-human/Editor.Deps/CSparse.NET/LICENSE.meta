@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 45c103de87e0482478aa1a5b27d20ba6
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/Editor.Deps/CSparse.NET/LICENSE
+  uploadId: 572188

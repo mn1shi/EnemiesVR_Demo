@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 263e0302dce1ae64f92aca3047632ddd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/HDRPDefaultResources/Sky and Fog Settings Profile.asset
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4c512f842f81f0242838e83deb36b946
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8600000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/SDF_RenderTexture_4k.asset
+  uploadId: 572188

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9c2f5d9867478d84a9a3e4eca3a78988
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/DLSS-Balanced.json
+  uploadId: 572188

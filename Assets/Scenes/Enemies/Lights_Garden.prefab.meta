@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6d524a0d632c4034f98cb4d2eb12fb7a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Lights_Garden.prefab
+  uploadId: 572188

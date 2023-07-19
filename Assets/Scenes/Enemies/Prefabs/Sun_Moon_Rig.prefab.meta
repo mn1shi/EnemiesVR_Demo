@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c57dc82cf4327df4f98df04cc010fd6d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Prefabs/Sun_Moon_Rig.prefab
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 600396dc007a25b41b173b9315fee4c2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/DiffusionProfiles/DiffusionProfile_drapes.asset
+  uploadId: 572188

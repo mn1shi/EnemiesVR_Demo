@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 47f17251abce85443b271cb876b69cd1
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/VFX/Flame/FlameFunctions.hlsl
+  uploadId: 572188

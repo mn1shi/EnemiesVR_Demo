@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 80a4dc51e35464d48807ad0b04382963
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/AO-RT-Low Profile.asset
+  uploadId: 572188

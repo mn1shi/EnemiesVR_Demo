@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 96ccbd3cf0b2de94283da56a34488ea8
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Shaders/HairAmbientOcclusionFromVolume.hlsl
+  uploadId: 572188

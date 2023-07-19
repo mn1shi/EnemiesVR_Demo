@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c66d41f990abdd0478b51c90404ac07a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Circle_Modules/Circle_Module_Mid.mat
+  uploadId: 572188

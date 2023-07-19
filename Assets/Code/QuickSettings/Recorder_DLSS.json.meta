@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 83619fa784906364394bf8fb5e65240f
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Recorder_DLSS.json
+  uploadId: 572188

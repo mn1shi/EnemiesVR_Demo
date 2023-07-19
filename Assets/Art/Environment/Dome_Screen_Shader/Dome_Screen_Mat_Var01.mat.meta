@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3f00bdd3d3f740944a7cf95c815efdf2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Dome_Screen_Shader/Dome_Screen_Mat_Var01.mat
+  uploadId: 572188

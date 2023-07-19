@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2ab30b860d61f24448b41d0f6f2d1000
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/Editor.Deps/Accord.NET/Contributors.txt
+  uploadId: 572188

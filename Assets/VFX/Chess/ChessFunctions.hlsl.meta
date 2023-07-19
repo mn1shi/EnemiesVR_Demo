@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bb169a239dfbbca458a39a7e12bfe263
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/VFX/Chess/ChessFunctions.hlsl
+  uploadId: 572188

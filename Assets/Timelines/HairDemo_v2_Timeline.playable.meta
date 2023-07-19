@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 365af6b1b9ce4f440befda590f5e4ed7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Timelines/HairDemo_v2_Timeline.playable
+  uploadId: 572188

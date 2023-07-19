@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ec2918894e5ff724c92c30b87ec78180
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Lens Flare Presets/LensFlarePresets/Shapes.asset
+  uploadId: 572188

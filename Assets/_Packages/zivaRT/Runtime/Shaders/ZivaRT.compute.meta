@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c56760ecb5a175847b7b28dcacf8f3e0
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/Shaders/ZivaRT.compute
+  uploadId: 572188

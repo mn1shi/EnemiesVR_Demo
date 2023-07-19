@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ee8ea4dd5d5171047bf6a80d6ac651ac
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Column_01/Column.prefab
+  uploadId: 572188

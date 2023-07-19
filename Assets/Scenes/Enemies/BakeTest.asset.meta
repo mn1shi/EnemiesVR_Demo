@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5e1751e8d675c87408f5cce37ddc5fbd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/BakeTest.asset
+  uploadId: 572188

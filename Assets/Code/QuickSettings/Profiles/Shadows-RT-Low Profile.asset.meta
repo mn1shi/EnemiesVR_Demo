@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 94d577716bffe1541b7c90e0eb3f8132
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/Shadows-RT-Low Profile.asset
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 03b5d42e540cf264894bf43a54bf01bf
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Hair/Materials/Hair_01_high.mat
+  uploadId: 572188

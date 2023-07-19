@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e17619a44603bf844a67edaaef920610
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Prefabs/Sun_Moon.prefab
+  uploadId: 572188

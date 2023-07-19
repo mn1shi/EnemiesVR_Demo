@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4811688c8b0f78445b9e1b104c2a97b5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Circle_Modules/Circle_Module_Mid_Tunnel.mat
+  uploadId: 572188

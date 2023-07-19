@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 392deafd1a40c1446ae2f51f689809e7
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Samples~/HairSample/Scenes/HairSample_HDRP.unity
+  uploadId: 572188

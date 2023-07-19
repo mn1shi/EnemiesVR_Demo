@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a497841658a8d6a4392917d319ef6345
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairVolume.hlsl
+  uploadId: 572188

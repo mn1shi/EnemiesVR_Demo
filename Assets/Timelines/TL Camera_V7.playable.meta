@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fa714e3b750d2a1468aeac9eadc7afde
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Timelines/TL Camera_V7.playable
+  uploadId: 572188

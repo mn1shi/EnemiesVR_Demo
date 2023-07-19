@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: eeb695b92f94cbc4c9ead104006486d5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Timelines/TL_Performance_V6.playable
+  uploadId: 572188

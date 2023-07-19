@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5c7b02b488fac534587379f99933ba6c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/StereoRenderHelper/StereoSettingsTunnel.asset
+  uploadId: 572188

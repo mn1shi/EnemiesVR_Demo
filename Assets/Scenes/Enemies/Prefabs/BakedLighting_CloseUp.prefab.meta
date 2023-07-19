@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0ad8bdaa8e64a1240b9882d84152396b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Prefabs/BakedLighting_CloseUp.prefab
+  uploadId: 572188

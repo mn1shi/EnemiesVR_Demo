@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bb6e300b69d8c454ab8d0c3f13044871
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/HDRPDefaultResources/Skin Diffusion Profile.asset
+  uploadId: 572188

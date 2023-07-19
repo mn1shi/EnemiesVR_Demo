@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2a7fe76affd714d40bd05ff3eb1e8fc9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/DebugController/DebugController.cs
+  uploadId: 572188

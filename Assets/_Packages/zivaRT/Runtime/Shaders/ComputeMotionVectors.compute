@@ -1,0 +1,36 @@
+
+#pragma kernel MotionVectors
+#pragma kernel FirstTimeMotionVectors
+
+uint totalNumVertices;
+uint vertexStride;
+uint motionVertexStride;
+uint positionOffset;
+uint motionVectorOffset;
+// float deltaTime;
+ByteAddressBuffer currentPositions;
+RWStructuredBuffer<float3> previousPositions;
+RWByteAddressBuffer motionVectors;
+
+[numthreads(64, 1, 1)] void MotionVectors(uint3 dtid : SV_DispatchThreadID)
+{
+    uint vtx = dtid.x;
+    if (vtx >= totalNumVertices) return;
+
+    float3 prevPos = previousPositions[vtx];
+    float3 currPos = asfloat(currentPositions.Load3((vtx * vertexStride + positionOffset)));
+
+    motionVectors.Store3(vtx * motionVertexStride + motionVectorOffset, asuint(currPos - prevPos)); // * deltaTime;
+    previousPositions[vtx] = currPos;
+}
+
+[numthreads(64, 1, 1)] void FirstTimeMotionVectors(uint3 dtid : SV_DispatchThreadID)
+{
+    uint vtx = dtid.x;
+    if (vtx >= totalNumVertices) return;
+
+    float3 currPos = asfloat(currentPositions.Load3((vtx * vertexStride + positionOffset)));
+
+    motionVectors.Store3(vtx * motionVertexStride + motionVectorOffset, asuint(float3(0,0,0))); 
+    previousPositions[vtx] = currPos;
+}

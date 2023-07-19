@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c0dfc147b9254a14286df3ebe4e96756
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Bootstrap.unity
+  uploadId: 572188

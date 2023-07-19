@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cd60d149f6719424c9ba938b30440a3e
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/ShaderLibrary/Nodes_Common/IsForwardPass.hlsl
+  uploadId: 572188

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4051c2c6e40832e49b35fed17e929e0e
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/Shaders/RemapVertices.compute
+  uploadId: 572188

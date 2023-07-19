@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: af8a6fecc463a364ab9b9720d8fe72e3
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/ShaderLibrary/Nodes_Teeth/TeethAttenuation.hlsl
+  uploadId: 572188

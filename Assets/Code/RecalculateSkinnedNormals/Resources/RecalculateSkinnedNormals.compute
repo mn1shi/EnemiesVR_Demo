@@ -1,0 +1,56 @@
+#pragma kernel kCalculateCrossProductPerTriangle
+#pragma kernel kRecalculateNormals
+
+#define KERNEL_SIZE 64
+//#pragma enable_d3d11_debug_symbols
+StructuredBuffer<uint2> _AdjacencyListOffsetCount;
+StructuredBuffer<uint> _AdjacentTriangleIndices;
+StructuredBuffer<float3> _TriangleCrossProd;
+RWStructuredBuffer<float3> _TriangleCrossProdRW;
+
+ByteAddressBuffer _PosNormalBuffer;
+RWByteAddressBuffer _PosNormalBufferRW;
+StructuredBuffer<int> _IndexBuffer;
+uint3 _StridePosNormOffset;
+uint _TriangleCount;
+uint _VertexCount;
+
+[numthreads(KERNEL_SIZE,1,1)]
+void kCalculateCrossProductPerTriangle (uint id : SV_DispatchThreadID)
+{
+    if(id >= _TriangleCount) return;
+
+    uint i0 = _IndexBuffer[id * 3];
+    uint i1 = _IndexBuffer[id * 3 + 1];
+    uint i2 = _IndexBuffer[id * 3 + 2];
+
+    float3 p0 = asfloat(_PosNormalBuffer.Load3(i0 * _StridePosNormOffset.x + _StridePosNormOffset.y ));
+    float3 p1 = asfloat(_PosNormalBuffer.Load3(i1 * _StridePosNormOffset.x + _StridePosNormOffset.y ));
+    float3 p2 = asfloat(_PosNormalBuffer.Load3(i2 * _StridePosNormOffset.x + _StridePosNormOffset.y ));
+
+    float3 v1 = p1 - p0;
+    float3 v2 = p2 - p0;
+
+    float3 crossProduct = cross(v1, v2);
+    _TriangleCrossProdRW[id] = crossProduct;
+}
+
+
+[numthreads(KERNEL_SIZE,1,1)]
+void kRecalculateNormals (uint id : SV_DispatchThreadID)
+{
+    if(id >= _VertexCount) return;
+
+    uint2 adjacencyOffsetCount = _AdjacencyListOffsetCount[id];
+    float3 dotProdSum = 0;
+
+    for(uint i = 0; i < adjacencyOffsetCount.y; ++i)
+    {
+        uint triangleId = _AdjacentTriangleIndices[adjacencyOffsetCount.x + i];
+        dotProdSum += _TriangleCrossProd[triangleId];
+    }
+
+    float3 normal = normalize(dotProdSum);
+    _PosNormalBufferRW.Store3(id * _StridePosNormOffset.x + _StridePosNormOffset.z, asuint(normal));
+    
+}

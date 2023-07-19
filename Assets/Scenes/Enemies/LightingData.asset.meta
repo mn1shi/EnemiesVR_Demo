@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7ea54c1971645f247bfd35d4c10159d8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/LightingData.asset
+  uploadId: 572188

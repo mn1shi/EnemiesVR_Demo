@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: df4f1926239ab084ea466426a9c0572a
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Occlusion-Medium.json
+  uploadId: 572188

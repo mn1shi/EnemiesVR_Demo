@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c4d22b91ab43adf43a5e866ddfe68fab
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/HairInstanceStripper/HairInstanceStripper.cs
+  uploadId: 572188

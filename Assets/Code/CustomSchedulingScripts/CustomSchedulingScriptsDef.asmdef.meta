@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2cec12d2cedc3254485e19db5ccba96e
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/CustomSchedulingScripts/CustomSchedulingScriptsDef.asmdef
+  uploadId: 572188

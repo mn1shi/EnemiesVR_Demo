@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a4b4b02adaf8f8047a7d7fcda56ca440
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/New Baking Set.asset
+  uploadId: 572188

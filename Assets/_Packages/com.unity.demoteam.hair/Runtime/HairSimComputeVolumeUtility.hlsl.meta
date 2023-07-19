@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a9295d3d311e0ff4a9c4f997d12a6c5d
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairSimComputeVolumeUtility.hlsl
+  uploadId: 572188

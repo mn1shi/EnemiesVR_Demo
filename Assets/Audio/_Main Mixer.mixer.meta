@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 86c57b1fd8730b94fa0a7d2e2197546f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Audio/_Main Mixer.mixer
+  uploadId: 572188

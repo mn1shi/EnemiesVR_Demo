@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7e9f89c3b3ffdd54e9b8bc086debb13f
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Hair-High.json
+  uploadId: 572188

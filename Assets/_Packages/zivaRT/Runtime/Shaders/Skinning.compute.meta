@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dbe187c37a35e7c409a4739f84127fae
+ComputeShaderImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/Shaders/Skinning.compute
+  uploadId: 572188

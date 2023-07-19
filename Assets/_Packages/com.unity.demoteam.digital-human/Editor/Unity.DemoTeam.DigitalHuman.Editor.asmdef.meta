@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b17992f34fc1e234492c1fb1aa2c005e
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/Editor/Unity.DemoTeam.DigitalHuman.Editor.asmdef
+  uploadId: 572188

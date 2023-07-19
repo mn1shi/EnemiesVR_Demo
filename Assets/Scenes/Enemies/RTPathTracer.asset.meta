@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8b626151201d033489f1dbfd6a0bdf62
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/RTPathTracer.asset
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: eeb2e045679bcbc45a71a9b89ea7e198
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/HDRI Sky Day Kloppenheim - Main Scene.asset
+  uploadId: 572188

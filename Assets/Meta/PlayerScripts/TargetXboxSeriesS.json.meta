@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 783e9d41a8ff4f049a690e4e89240713
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/TargetXboxSeriesS.json
+  uploadId: 572188

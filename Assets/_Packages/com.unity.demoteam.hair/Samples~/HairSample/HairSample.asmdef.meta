@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ab711d20616f81447bfddeeaa3bcb198
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Samples~/HairSample/HairSample.asmdef
+  uploadId: 572188

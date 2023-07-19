@@ -1,0 +1,276 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3533859670377109036
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dome_Screen_Mat_Var01
+  m_Shader: {fileID: -6465566751694194690, guid: 5b2f2befddba6694bb32d3dd2270591d, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _DISABLE_DECALS
+  - _DISABLE_SSR
+  - _DISABLE_SSR_TRANSPARENT
+  - _ENABLE_FOG_ON_TRANSPARENT
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords:
+  - _ALPHATEST_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  - ForwardEmissiveForDeferred
+  - TransparentDepthPrepass
+  m_LockedProperties: _Sky_Texture_Off_Base_Tint_Color_RT
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Pixel_Image:
+        m_Texture: {fileID: 2800000, guid: b59580b6787a73b4ba4dcceaf76a876b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Sky_Texture:
+        m_Texture: {fileID: 2800000, guid: 8ee97f7fbdb12cb43ba55692982ec274, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Transition_Texture:
+        m_Texture: {fileID: 2800000, guid: 7e0d4a1e65e7918428db43babb5f2510, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_0e266272d78343399fb704f5ea73660b_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 2c48a80df116de042993a8f98517d8b1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_17061b7238dd484d9ac0efd4b65fe828_Texture_1:
+        m_Texture: {fileID: 2800000, guid: b7b204fe1eddf3e47988ca34015e7d14, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_1b48ad1a6ae74517a292196723a84667_Texture_1:
+        m_Texture: {fileID: 2800000, guid: bc1a28fbda01d74478b168a0273bd64d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_22b8084537244c7eac85b62cf631d163_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 222dcf72b8e98934788a7cb766698253, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_264b61bb35c543ddab49c5a68529526d_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7498081f164d0cb459fd24ea29af95aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_780efbfbf6c14a3487a51823bacba57f_Texture_1:
+        m_Texture: {fileID: 2800000, guid: bc1a28fbda01d74478b168a0273bd64d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_cbf69ae2373b4586a7d55f40b738b563_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 56369611681cb304993ba9c030f0d486, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Sky_Cubemap_Texture:
+        m_Texture: {fileID: 8900000, guid: 10cc2d6a0b36c9a4f8446571f58fccd6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Sky_Texture_Cubemap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Sky_Texture_Off:
+        m_Texture: {fileID: 2800000, guid: d75cda7d9655c7346b3d0a5e9c56920f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Sky_Texture_Off_Base:
+        m_Texture: {fileID: 2800000, guid: 3df271aefbe3c4a449a3b054c24d29ac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_234f86fea0c945dea91df2a34a3eba83_Out_0:
+        m_Texture: {fileID: 2800000, guid: ecae47e1584d7a2479302db57a10da2b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Distort_Noise_Size: 15
+    - Distortion_Mask_Size_Offset: 1
+    - Distortion_Strength: 1.52
+    - Emission_Intensity: 10000
+    - Emissive_Dissolve_Mask_Contrast: 0
+    - Emissive_Dissolve_Mask_Multiplier: 0.5
+    - Emissive_Intensity: 0
+    - Emissive_Intensity_Dissolve: 0
+    - Hard_Transition: 0
+    - LED_UV_Set: 3
+    - Mask_Hardness: 1
+    - Mask_Size: 0
+    - Metallic: 0
+    - Noise_Influence: 1
+    - Noise_Intensity: 1
+    - Noise_Pan_Speed: 0
+    - Noise_Size: 10
+    - Noise_Strength: 0
+    - Pixel_Image_Saturation: 0.2
+    - Radial_Transition: 1
+    - Resolution_Change_Mask_Size: 0
+    - Resolution_Chanve_Mask_Hardness: 0
+    - Resolution_Multiplier: 3
+    - Rotation_Speed: 0
+    - Shockwave_Blur: 0.72
+    - Shockwave_Res_Multiplier: 1
+    - Shockwave_Size: 0.15
+    - Smooth_Transition: 1
+    - Smoothness: 0
+    - Step: 0.163
+    - Transition_Texture_Contrast: 5
+    - Transition_Texture_Influence: 0
+    - VC_Red_Multiplier: 5
+    - VC_Red_Power: 0.8
+    - _AddPrecomputedVelocity: 0
+    - _AlphaCutoffEnable: 1
+    - _AlphaDstBlend: 10
+    - _AlphaSrcBlend: 1
+    - _AlphaToMask: 0
+    - _AlphaToMaskInspectorValue: 0
+    - _Alpha_Clip_Threshold: 0
+    - _Base_Blend_Multiplier: 1
+    - _Base_Blend_Power: 2
+    - _BlendMode: 0
+    - _ConservativeDepthOffsetEnable: 0
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _DepthOffsetEnable: 0
+    - _Distort_Mask_Size: 0
+    - _Distortion_Mask_Contrast: 0
+    - _Distortion_Mask_Hardness: 0
+    - _Distortion_Mask_Size: 0.22
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedGIMode: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 10
+    - _Emission_Intensity: 4000000
+    - _Emission_Multiplier: 0.5
+    - _Emission_Multiplier_RT: 1
+    - _Emissiveness: 1000000
+    - _EnableBlendModePreserveSpecularLighting: 0
+    - _EnableFogOnTransparent: 1
+    - _ForceForwardEmissive: 1
+    - _Noise_Mask_A_Size: 200
+    - _Noise_Mask_B_Size: 1000
+    - _Noise_Mask_Multiplier: 2
+    - _Noise_Mask_Power: 8
+    - _Off: 1
+    - _Off_Emission_Multiplier: 0.08
+    - _OpaqueCullMode: 2
+    - _Opaque_RT_only: 0
+    - _Opening_Distort_Multiplier: 0.98
+    - _Opening_Distort_Power: 0.43
+    - _Overall_Transparency: 1
+    - _PreD_Hardness: -0.29
+    - _PreD_Influence: 0
+    - _PreD_Multiplier: 1.79
+    - _PreD_Noise_Influence: 0
+    - _PreD_Noise_Pan_Speed: 0
+    - _PreD_Noise_Size: 67.27
+    - _PreD_Noise_Strength: 0.2
+    - _PreD_Power: 11.63
+    - _PreD_Size: 0.12
+    - _RayTracing: 0
+    - _ReceivesSSR: 0
+    - _ReceivesSSRTransparent: 0
+    - _RefractionModel: 0
+    - _RenderQueueType: 4
+    - _RequireSplitLighting: 0
+    - _Resolution_Multiplier_B: 2
+    - _Shockwave_Hardness: 0
+    - _Shockwave_Intensity: 0
+    - _Shockwave_Size: 0
+    - _Sky_Texture_Off_Base_LED_UV_Set: 0
+    - _Sky_Texture_Off_Base_Pan_Speed: 0.005001
+    - _Sky_Texture_Off_Base_x_2: 1
+    - _Sky_Texture_Off_Base_x_2_Tile_Multiplier: 1
+    - _Sky_Texture_Off_LED_UV_Set: 2
+    - _Sky_Texture_Off_Pan_Speed: 0.002
+    - _Sky_Texture_Off_x_2: 1
+    - _Sky_Texture_Off_x_2_Tile_Multiplier: 1
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 9
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 41
+    - _SupportDecals: 0
+    - _SurfaceType: 1
+    - _Trailing_Pixels_Intensity: 1
+    - _Trailing_Pixels_Multiplier: 100
+    - _Transition_Texture_Multiplier: 1
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentSortPriority: 0
+    - _TransparentWritingMotionVec: 0
+    - _TransparentZWrite: 1
+    - _UseShadowThreshold: 0
+    - _Use_Base_Texture: 1
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 3
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    m_Colors:
+    - Center: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - Emissive_Dissolve_Color_Multiplier: {r: 1, g: 1, b: 1, a: 1}
+    - Mask_Center: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - Res: {r: 100, g: 100, b: 0, a: 0}
+    - Resolution: {r: 100, g: 100, b: 0, a: 0}
+    - Rotation_Center: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - UV_Tiling: {r: 512, g: 5, b: 0, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Sky_Color: {r: 0.15141805, g: 0.19391088, b: 0.2735849, a: 0}
+    - _Sky_Texture_Off_Base_Tile: {r: 1, g: 1, b: 0, a: 0}
+    - _Sky_Texture_Off_Base_Tint_Color: {r: 0.16862746, g: 0.18626022, b: 0.34901962, a: 0}
+    - _Sky_Texture_Off_Base_Tint_Color_RT: {r: 0.11062655, g: 0.14935696, b: 0.31132078, a: 0}
+    - _Sky_Texture_Off_Tile: {r: 0.72, g: 2, b: 0, a: 0}
+    - _Sky_Texture_Off_Tint_Color: {r: 0.58176094, g: 0.6574424, b: 1, a: 0}
+  m_BuildTextureStacks: []

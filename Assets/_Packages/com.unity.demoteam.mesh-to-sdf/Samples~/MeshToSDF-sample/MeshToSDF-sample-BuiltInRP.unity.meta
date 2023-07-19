@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e45db8d4e94a77844b32149601b060e8
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.mesh-to-sdf/Samples~/MeshToSDF-sample/MeshToSDF-sample-BuiltInRP.unity
+  uploadId: 572188

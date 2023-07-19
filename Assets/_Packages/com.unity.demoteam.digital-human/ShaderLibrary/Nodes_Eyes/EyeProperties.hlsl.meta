@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1d219ef2a99a0234b9b26397bb929fda
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/ShaderLibrary/Nodes_Eyes/EyeProperties.hlsl
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c50802f45b74b194c953b17abe5cf6a4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/AO-R-Off Profile.asset
+  uploadId: 572188

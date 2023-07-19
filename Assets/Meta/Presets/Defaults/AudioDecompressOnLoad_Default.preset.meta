@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0cd792cc87e492d43b4e95b205fc5cc6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/Presets/Defaults/AudioDecompressOnLoad_Default.preset
+  uploadId: 572188

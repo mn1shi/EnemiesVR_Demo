@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: aeb11fc6db749ec44b4e3f77eea38860
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/Utility/Texture2DLabels.cs
+  uploadId: 572188

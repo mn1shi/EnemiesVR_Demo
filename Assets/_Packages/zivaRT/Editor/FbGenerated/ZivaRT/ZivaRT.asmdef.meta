@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 96a1b729e9660c848bff2626ed675c35
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Editor/FbGenerated/ZivaRT/ZivaRT.asmdef
+  uploadId: 572188

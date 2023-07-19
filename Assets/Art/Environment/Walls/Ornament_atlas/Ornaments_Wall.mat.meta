@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2775fa09935020147858255f92b2dcfb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Walls/Ornament_atlas/Ornaments_Wall.mat
+  uploadId: 572188

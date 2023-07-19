@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3dfc007e1a165414ba2691566c6f5b99
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Volume_tunnel Profile.asset
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 321618e4ec4c3304492ac03db57360f9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/Eyes/Tearline.mat
+  uploadId: 572188

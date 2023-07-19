@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 551cc6dda8d1c3a4c80468d1f2d2a30e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Timelines/TL_Set_V4.playable
+  uploadId: 572188

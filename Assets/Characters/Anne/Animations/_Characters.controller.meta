@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 64b1ed63cd5a11e46a465f8520f5ba33
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Animations/_Characters.controller
+  uploadId: 572188

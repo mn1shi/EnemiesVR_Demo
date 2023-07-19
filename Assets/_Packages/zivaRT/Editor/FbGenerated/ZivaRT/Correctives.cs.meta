@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0209844f3f65f5241829277ac0166232
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Editor/FbGenerated/ZivaRT/Correctives.cs
+  uploadId: 572188

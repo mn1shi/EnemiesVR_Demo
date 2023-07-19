@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6460ff3dcb74b52489f04e8f89c3cf65
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/Anne_Lacryma.mat
+  uploadId: 572188

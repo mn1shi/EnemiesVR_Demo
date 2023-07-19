@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bb052f042647fc24a8e98f9acb23486e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Lens Flare Presets/SampleScene/Materials/Emissive Bulb.mat
+  uploadId: 572188

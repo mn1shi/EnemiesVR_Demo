@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c80e9fd0023e21d42a8e43939db19eab
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/StereoRenderHelper/StereoRecorderPreset.asset
+  uploadId: 572188

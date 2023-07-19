@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 459a93e2a2927ac47a716c513e03dbe7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/Teeth/Anne_teeth.mat
+  uploadId: 572188

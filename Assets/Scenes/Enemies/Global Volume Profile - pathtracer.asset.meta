@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 574d3fd24bba1e643834316a5eee1bcf
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Global Volume Profile - pathtracer.asset
+  uploadId: 572188

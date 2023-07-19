@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bf401a0b4c1473747a4fe53cf1beda98
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Preset-Low.txt
+  uploadId: 572188

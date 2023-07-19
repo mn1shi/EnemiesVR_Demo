@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a975f2ed5086a154a8958d8dc67926c9
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Editor/Unity.ZivaRTPlayer.Editor.asmdef
+  uploadId: 572188

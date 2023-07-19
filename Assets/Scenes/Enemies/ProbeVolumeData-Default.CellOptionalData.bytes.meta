@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 902f4ed8f9276844482b56c387ff8e3e
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/ProbeVolumeData-Default.CellOptionalData.bytes
+  uploadId: 572188

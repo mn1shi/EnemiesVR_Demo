@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 33e160ff71c9b1e45be8b5b71658b6b1
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Preset-Ultra.txt
+  uploadId: 572188

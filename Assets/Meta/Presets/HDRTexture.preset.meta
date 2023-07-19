@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 78830bb1431cab940b74be615e2a739f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2655988077585873504
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/Presets/HDRTexture.preset
+  uploadId: 572188

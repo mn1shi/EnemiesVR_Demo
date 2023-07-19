@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b6088415b07a2b44ab1624cac72a2252
+ComputeShaderImporter:
+  externalObjects: {}
+  currentAPIMask: 4
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Runtime/HairSimComputeSolver.compute
+  uploadId: 572188

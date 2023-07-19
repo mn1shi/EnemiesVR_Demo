@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8cd5cfb40bdaad94a9d3e2fe12910022
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/HDRPDefaultResources/DefaultSceneRoot.prefab
+  uploadId: 572188

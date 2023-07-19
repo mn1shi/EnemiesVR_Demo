@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e784becc05930cd4c9380f0f93f547a6
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Editor/FlatBuffers/FlatBuffers.asmdef
+  uploadId: 572188

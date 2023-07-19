@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b586a74942fa7fb4585fc03acb473887
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Lens Flare Presets/LensFlarePresets/Caustic.asset
+  uploadId: 572188

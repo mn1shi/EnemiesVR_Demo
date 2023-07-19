@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d3421b0049665154091017420c9f0dfb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Sky and Fog Settings Profile.asset
+  uploadId: 572188

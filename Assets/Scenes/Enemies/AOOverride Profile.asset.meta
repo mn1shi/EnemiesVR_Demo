@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bb1a6585552b94d45909102a44e81870
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/AOOverride Profile.asset
+  uploadId: 572188

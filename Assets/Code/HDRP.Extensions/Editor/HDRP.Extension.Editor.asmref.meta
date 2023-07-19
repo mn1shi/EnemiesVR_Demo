@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7e6f846464e7f2d43ba928bbf2f9808c
+AssemblyDefinitionReferenceImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/HDRP.Extensions/Editor/HDRP.Extension.Editor.asmref
+  uploadId: 572188

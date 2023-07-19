@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 460e573eb8466884baaa0b8475505f83
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/Presets/AudioStreaming.preset
+  uploadId: 572188

@@ -1,0 +1,219 @@
+
+#pragma kernel ResolveAttachment KERNEL_NAME=ResolveAttachment
+#pragma kernel ResolveAttachmentWithMovecs KERNEL_NAME=ResolveAttachmentWithMovecs GENERATE_MOVECS
+#pragma kernel ResolveTransformAttachments KERNEL_NAME=ResolveTransformAttachments TRANSFORM_RESOLVE
+
+#ifndef PI
+#define PI 3.14159265359f
+#endif 
+
+struct SkinAttachmentPose
+{
+    float3 targetCoord;
+    int v0;
+    int v1;
+    int v2;
+    float area;
+    float targetDist;
+};
+
+
+struct SkinAttachmentItem
+{
+    float4 targetFrameDelta;
+    float3 targetOffset;
+    float targetFrameW;
+    int baseVertex;
+    int poseIndex;
+    int poseCount;
+    int pad0;
+};
+
+//baked attachments data
+StructuredBuffer<SkinAttachmentPose> _AttachmentPosesBuffer;
+StructuredBuffer<SkinAttachmentItem> _AttachmentItemsBuffer;
+StructuredBuffer<uint> _TransformAttachmentOffsetBuffer;
+
+//skin buffers
+ByteAddressBuffer _SkinPositionsBuffer;
+ByteAddressBuffer _SkinNormalsBuffer;
+ByteAddressBuffer _SkinTangentsBuffer;
+int2 _SkinPositionStrideOffset;
+int2 _SkinNormalStrideOffset;
+int2 _SkinTangentStrideOffset;
+
+//attachment buffers
+RWByteAddressBuffer _AttachmentPosNormalTangentBuffer;
+int4 _StridePosNormTanOffsetAttachment;
+
+RWByteAddressBuffer _AttachmentMovecsBuffer;
+int2 _StrideOffsetMovecs;
+
+
+float4x4 _ResolveTransform;
+float4x4 _PostSkinningToAttachmentTransform;
+int _NumberOfAttachments;
+int _AttachmentOffset;
+int _NormalResolveMode; //0 == rotation via quat, 1 rotation via constructing full tangent space
+
+//from com.unity.demoteam.hair
+float4 QMul(float4 a, float4 b)
+{
+    float4 q;
+    q.xyz = a.w * b.xyz + b.w * a.xyz + cross(a.xyz, b.xyz);
+    q.w = a.w * b.w - dot(a.xyz, b.xyz);
+    return q;
+}
+
+float3 QMul(float4 q, float3 v)
+{
+    float3 t = 2.0 * cross(q.xyz, v);
+    return v + q.w * t + cross(q.xyz, t);
+}
+
+float4 QConjugate(float4 q)
+{
+    return q * float4(-1.0, -1.0, -1.0, 1.0);
+}
+
+float4 QInverse(float4 q)
+{
+    return QConjugate(q) * rcp(dot(q, q));
+}
+
+float4 MakeQuaternionFromTo(float3 u, float3 v)
+{
+    float4 q;
+    float s = 1.0 + dot(u, v);
+    if (s < 1e-6)// if 'u' and 'v' are directly opposing
+        {
+        q.xyz = abs(u.x) > abs(u.z) ? float3(-u.y, u.x, 0.0) : float3(0.0, -u.z, u.y);
+        q.w = 0.0;
+        }
+    else
+    {
+        q.xyz = cross(u, v);
+        q.w = s;
+    }
+    return normalize(q);
+}
+
+float4 MakeQuaternionFromToWithFallback(float3 u, float3 v, float3 w)
+{
+    float4 q;
+    float s = 1.0 + dot(u, v);
+    if (s < 1e-6)// if 'u' and 'v' are directly opposing
+        {
+        q.xyz = w;
+        q.w = 0.0;
+        }
+    else
+    {
+        q.xyz = cross(u, v);
+        q.w = s;
+    }
+    return normalize(q);
+}
+
+
+float4 MakeQuaternionLookAt(float3 forward, float3 up)
+{
+    float3 localForward = float3(0, 0, 1);
+    float3 localUp = float3(0, 1, 0);
+
+    float4 rotForward = MakeQuaternionFromTo(localForward, forward);
+    float4 rotForwardTwist = MakeQuaternionFromToWithFallback(QMul(rotForward, localUp), up, forward);
+
+    return QMul(rotForwardTwist, rotForward);
+}
+
+[numthreads(64,1,1)]
+void KERNEL_NAME (uint id : SV_DispatchThreadID)
+{
+    if(id < (uint)_NumberOfAttachments)
+    {
+        
+        float3 targetBlended = 0.0f;
+        float targetWeights = 0.0f;
+
+        int itemIndex = _AttachmentOffset + int(id);
+        int resolveVertexIndex = int(id);
+
+        #if TRANSFORM_RESOLVE
+        itemIndex = _TransformAttachmentOffsetBuffer[id];
+        #endif
+
+        #if GENERATE_MOVECS
+        float3 previousPos = asfloat(_AttachmentPosNormalTangentBuffer.Load3(resolveVertexIndex * _StridePosNormTanOffsetAttachment.x + _StridePosNormTanOffsetAttachment.y));
+        #endif
+        
+        SkinAttachmentItem item = _AttachmentItemsBuffer[itemIndex];
+    
+        int poseIndex0 = item.poseIndex;
+        int poseIndexN = item.poseIndex + item.poseCount;
+
+        for (int poseIndex = poseIndex0; poseIndex != poseIndexN; poseIndex++)
+        {
+            SkinAttachmentPose pose = _AttachmentPosesBuffer[poseIndex];
+
+            float3 p0 = asfloat(_SkinPositionsBuffer.Load3(pose.v0 * _SkinPositionStrideOffset.x + _SkinPositionStrideOffset.y));
+            float3 p1 = asfloat(_SkinPositionsBuffer.Load3(pose.v1 * _SkinPositionStrideOffset.x + _SkinPositionStrideOffset.y));
+            float3 p2 = asfloat(_SkinPositionsBuffer.Load3(pose.v2 * _SkinPositionStrideOffset.x + _SkinPositionStrideOffset.y));
+
+            float3 v0v1 = p1 - p0;
+            float3 v0v2 = p2 - p0;
+    
+            float3 triangleNormal = cross(v0v1, v0v2);
+            float triangleArea = length(triangleNormal);
+    
+            triangleNormal /= triangleArea;
+            triangleArea *= 0.5f;
+    
+            float3 targetProjected = pose.targetCoord.x * p0 + pose.targetCoord.y * p1 + pose.targetCoord.z * p2;
+            float3 target = targetProjected + triangleNormal * pose.targetDist;
+    
+            targetBlended += triangleArea * target;
+            targetWeights += triangleArea;
+        }
+
+        targetBlended = targetBlended / targetWeights;
+
+        float3 baseNormal = asfloat(_SkinNormalsBuffer.Load3(item.baseVertex * _SkinNormalStrideOffset.x + _SkinNormalStrideOffset.y));
+        float4 baseTangent4 = asfloat(_SkinTangentsBuffer.Load4(item.baseVertex * _SkinTangentStrideOffset.x + _SkinTangentStrideOffset.y));
+        float3 baseTangent = baseTangent4.xyz * baseTangent4.w;
+        
+        // convert to the same space as the attachment vertices
+        targetBlended = mul(_PostSkinningToAttachmentTransform, float4(targetBlended, 1.f) ).xyz;
+        baseNormal = mul(_PostSkinningToAttachmentTransform, float4(baseNormal, 0.f) ).xyz;
+        baseNormal = normalize(baseNormal);
+        baseTangent = mul(_PostSkinningToAttachmentTransform, float4(baseTangent, 0.f) ).xyz;
+        baseTangent = normalize(baseTangent);
+
+        float4 baseFrame = MakeQuaternionLookAt(baseNormal, baseTangent);
+
+        float4 targetFrame = QMul(baseFrame, item.targetFrameDelta);
+        float3 targetOffset = QMul(baseFrame, item.targetOffset);
+        float3 targetNormal = QMul(targetFrame, float3(0.f, 0.f, 1.f));
+        float3 targetTangent = QMul(targetFrame, float3(0.f, 1.f, 0.f));
+
+        float3 resolvedPos = mul(_ResolveTransform, float4(targetBlended + targetOffset, 1.f)).xyz;
+        float3 resolvedNormal = mul(_ResolveTransform, float4(targetNormal, 0.f)).xyz;
+        float3 resolvedTangent = mul(_ResolveTransform, float4(targetTangent, 0.f)).xyz;
+
+        _AttachmentPosNormalTangentBuffer.Store3(resolveVertexIndex * _StridePosNormTanOffsetAttachment.x + _StridePosNormTanOffsetAttachment.y, asuint(resolvedPos));
+#if !TRANSFORM_RESOLVE
+        _AttachmentPosNormalTangentBuffer.Store3(resolveVertexIndex * _StridePosNormTanOffsetAttachment.x + _StridePosNormTanOffsetAttachment.z, asuint(normalize(resolvedNormal)));
+        if(_StridePosNormTanOffsetAttachment.w != -1)
+        {
+            _AttachmentPosNormalTangentBuffer.Store4(resolveVertexIndex * _StridePosNormTanOffsetAttachment.x + _StridePosNormTanOffsetAttachment.w, asuint(float4(normalize(resolvedTangent), item.targetFrameW)));
+        }
+        
+#endif
+        #if GENERATE_MOVECS
+        _AttachmentMovecsBuffer.Store3(resolveVertexIndex * _StrideOffsetMovecs.x + _StrideOffsetMovecs.y, asuint(resolvedPos - previousPos));
+        #endif
+        
+    }
+
+    
+}

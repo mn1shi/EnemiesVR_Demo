@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 19b02b6c2a7a6b946be2fcf42f139a6b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_External/Sketchfab/ecorches_01/defaultMat.mat
+  uploadId: 572188

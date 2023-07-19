@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c4f5e1618cfd28a42bb784f991bbffed
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Volume DoF cheap Profile 1.asset
+  uploadId: 572188

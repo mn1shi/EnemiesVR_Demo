@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d965274bf85c6864fa3b901d9b8076e8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Trim/Trim_wall_01_metal_dark_02.mat
+  uploadId: 572188

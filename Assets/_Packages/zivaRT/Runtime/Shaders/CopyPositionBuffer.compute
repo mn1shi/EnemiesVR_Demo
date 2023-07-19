@@ -1,0 +1,20 @@
+//
+// Copy buffer
+//
+
+#pragma kernel CopyPositionBuffer
+
+// Inputs:
+uint copyBufferLength;
+StructuredBuffer<float3> srcPosBuffer;
+
+// Outputs:
+RWStructuredBuffer<float3> dstPosBuffer;
+
+[numthreads(64, 1, 1)] void CopyPositionBuffer(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint vertIdx = dtid.x;
+    if (vertIdx >= copyBufferLength) return;
+    dstPosBuffer[vertIdx] = srcPosBuffer[vertIdx];
+}

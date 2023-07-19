@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c8a886c063146654a9fad8bd4035da0b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/RootPrefabs/Lighting.prefab
+  uploadId: 572188

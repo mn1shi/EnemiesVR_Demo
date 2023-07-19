@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 15a572a81d4702b43bf09e1c3aa43005
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/Hair-Low Profile.asset
+  uploadId: 572188

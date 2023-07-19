@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hair_01_low
+  m_Shader: {fileID: -6465566751694194690, guid: 1dfcf021a4ef54940b5f670954d74175, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 1dfcf021a4ef54940b5f670954d74175, type: 3}
+  m_ModifiedSerializedProperties: 16
+  m_ValidKeywords:
+  - _ALPHATEST_ON
+  - _DISABLE_SSR_TRANSPARENT
+  m_InvalidKeywords:
+  - _HASDIFFUSETEXTURE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2475
+  stringTagMap:
+    MotionVector: User
+    RenderType: TransparentCutout
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  m_LockedProperties: _AO_Fade
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Diffuse:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Small_Hair_Mask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Smoothness:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AO_Fade: 1
+    - _AO_Start: 0.6
+    - _AO_from_density_Probe: 0.5
+    - _AddPrecomputedVelocity: 0
+    - _Alpha: 0.866
+    - _AlphaCutoffEnable: 1
+    - _Alpha_Pow: 1
+    - _Camera_Distance_Width_Thresold: 10
+    - _Color_Modification_Intensity: 1
+    - _Cull_Segments_Far_Distance: 4
+    - _Cull_Segments_Near_Distance: 0
+    - _Cull_Segments_Weight_Far: 120
+    - _Cull_Segments_Weight_Near: 0
+    - _Cuticle_Angle: 3
+    - _DebugUV: 0
+    - _Distance_Dilation_Max: 5
+    - _Distance_Dilation_Min_Distance: 0.7
+    - _Distance_Dilation_Multiplier: 2
+    - _DoubleSidedNormalMode: 2
+    - _Gain_Variation_Amount: 0
+    - _HASDIFFUSETEXTURE: 1
+    - _Min_Coverage_Alpha: 0.1
+    - _Radial_Smoothness: 0.081
+    - _Root_Alpha: 0.924
+    - _Root_Reach: 0.203
+    - _Saturation: 1
+    - _Shadow_Clip: 0.1
+    - _Shadow_Cull_Segments_Threshold: 0.1
+    - _Shadow_Cull_Segments_Weight: 80
+    - _Small_Alpha: 0.403
+    - _Small_Hair_Alpha_Pow: 1
+    - _Small_Hair_Max_Width: 2
+    - _Small_Hair_Shadow_Clip: 0.36
+    - _Small_Hair_Width_Pow: 1
+    - _Small_Root_Alpha: 0
+    - _Smoothness: 0.311
+    - _Smoothness_Gain: 0.3
+    - _Smoothness_Gain_Amount: 1
+    - _Smoothness_Gain_Frequence: 3.3
+    - _Strand_Shadow_Bias: 0.002
+    - _TWEAK_SMALL_HAIR: 0
+    - _Tint_Variation_Amount: 0
+    - _Tip_Alpha: 0.799
+    - _Tip_Reach: 0.508
+    - _USE_SMOOTHNESS_TEXTURE: 0
+    - _UseShadowThreshold: 1
+    - _Width: 4
+    - _WidthMin: 0.5
+    - _Width_Close_Range: 2
+    - _Width_Far_Range: 1
+    - _Width_Pow: 1
+    - _Width_Tip: 1
+    - _Width_Tip_Mult: 1
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 3
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Global_Tint: {r: 0.6698113, g: 0.50551784, b: 0.35702196, a: 1}
+    - _Hair_Direction: {r: 0, g: 1, b: 0, a: 0}
+    - _Mask_Remap: {r: 0, g: 0.22, b: 0, a: 0}
+    - _Random_Gain_Variation: {r: 1, g: 1, b: 1, a: 1}
+    - _Random_Tint_Variation: {r: 0.6509434, g: 0.5270935, b: 0.4206567, a: 0}
+    - _Root_Color_Add: {r: 0, g: 0, b: 0, a: 0}
+    - _Root_Tint: {r: 1, g: 1, b: 1, a: 0}
+    - _Smoothness_Remap: {r: 0, g: 1, b: 0, a: 0}
+    - _Tip_Color_Add: {r: 0.6886792, g: 0.59487915, b: 0.51001245, a: 1}
+    - _Tip_Color_Tint: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &7589235273633152494
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 

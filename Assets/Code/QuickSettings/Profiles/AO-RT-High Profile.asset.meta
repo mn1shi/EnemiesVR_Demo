@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a11c24e3ea71b0740b5a0e139a65f81c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/QuickSettings/Profiles/AO-RT-High Profile.asset
+  uploadId: 572188

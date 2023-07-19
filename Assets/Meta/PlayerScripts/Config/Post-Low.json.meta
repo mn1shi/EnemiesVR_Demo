@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0eea593579543f740a0e86b73df9f413
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/PlayerScripts/Config/Post-Low.json
+  uploadId: 572188

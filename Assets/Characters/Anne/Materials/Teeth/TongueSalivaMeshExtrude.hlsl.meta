@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3fde1cc26271f374e9520789f4158ebe
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/Teeth/TongueSalivaMeshExtrude.hlsl
+  uploadId: 572188

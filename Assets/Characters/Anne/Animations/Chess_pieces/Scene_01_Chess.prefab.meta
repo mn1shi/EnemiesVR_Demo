@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 90ba2f57511a43949b169f0d76c3a5d6
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Animations/Chess_pieces/Scene_01_Chess.prefab
+  uploadId: 572188

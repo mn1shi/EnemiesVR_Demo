@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a6695c27e1641244ba870b8f7939bc85
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/HairLODControl/HairLODControlDef.asmdef
+  uploadId: 572188

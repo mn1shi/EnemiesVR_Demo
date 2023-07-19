@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9b733a5afd2363e409ac0b9ced1ac145
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/RootPrefabs/Performance.prefab
+  uploadId: 572188

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 852440ec915fcf247a8093430de4542c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.hair/Samples~/HairSample/Prefabs/Camera_URP.prefab
+  uploadId: 572188

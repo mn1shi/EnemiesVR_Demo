@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a19a445b8ce4f8844a61e3c623421ea3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/PlayerLoopStripper/PlayerLoopStripper.prefab
+  uploadId: 572188

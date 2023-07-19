@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 044c3211cee92ac4c9e556440761da26
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Cloth_textures/Dress_textures_05/Silk_EnemiesDress_01.shadergraph
+  uploadId: 572188

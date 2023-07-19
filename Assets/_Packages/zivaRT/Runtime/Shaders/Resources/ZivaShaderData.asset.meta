@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4a5cfc0dc9618ce44ae5be3b1abd0ae6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/zivaRT/Runtime/Shaders/Resources/ZivaShaderData.asset
+  uploadId: 572188

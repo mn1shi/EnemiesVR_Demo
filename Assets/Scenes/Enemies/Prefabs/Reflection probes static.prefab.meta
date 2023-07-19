@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a781ff90de4a4cb4bb6af5a515c5bb6f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/Prefabs/Reflection probes static.prefab
+  uploadId: 572188

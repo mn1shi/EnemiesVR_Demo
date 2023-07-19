@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fa28e2bfe6c950940a3b35b5ee72752d
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Code/HairInstanceStripper/HairInstanceStripperDef.asmdef
+  uploadId: 572188

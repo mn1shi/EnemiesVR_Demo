@@ -1,0 +1,400 @@
+#include "Utilities.hlsl"
+
+//
+// KernelFunctions (correctives)
+//
+
+#pragma kernel KernelFunctions
+
+struct KernelFunctionIndices
+{
+    uint poseIndices; // Not the same as `pose` due to data compression!
+    uint pose;        // poseScale, poseShift, kernelScale
+    uint kernelCenters;
+    uint scalePerKernel; // TODO: Same as phi? Depends on padding...
+    uint kernelNum;
+};
+
+// Dynamic inputs:
+StructuredBuffer<float> pose;
+
+// Static inputs:
+uint totalNumKernels;
+StructuredBuffer<uint> kernelPatchMap;
+
+StructuredBuffer<KernelFunctionIndices> patchKernelFunctionStartIndices;
+StructuredBuffer<uint>
+patchPhiStartIndices; // Separated in order to share with other compute kernels
+
+StructuredBuffer<uint> poseIndices; // Each uint is two packed uint16s
+StructuredBuffer<float> poseScale;
+StructuredBuffer<float> poseShift;
+
+StructuredBuffer<float> kernelScale;
+StructuredBuffer<int> kernelCenters; // Each int is 4 packed sbytes
+StructuredBuffer<uint> patchKernelCentersStrides;
+StructuredBuffer<float> scalePerKernel;
+
+// Outputs:
+RWStructuredBuffer<float> phi;
+
+// Retrieve a block of 4 entries from the same row (aka kernel center) of the kernelCenters matrix.
+// kernelCenters is a KxP matrix; K = numKernelCenters; P = numPoseDimensions;
+// Handles any decompression necessary to unpack the data into floats.
+// NOTE: p must be a multiple of 4.
+float4 GetKernelCentersBlock(uint patchKernelCentersStart, uint ld, uint k, uint p)
+{
+    // Our kernel centers are compressed into one sbyte per matrix entry.
+    return LoadCompressedInt8MatrixRowBlock(kernelCenters, patchKernelCentersStart, ld, k, p);
+}
+
+// Same as GetKernelCentersBlock(), but meant to be used at the end of a buffer when there are only
+// numEntries values left in the buffer.
+// Handles any decompression necessary while ensuring that no buffer overruns occur from attempting
+// to read more than numEntries in order to fill the block. This additional logic makes it strictly
+// slower than GetKernelCentersBlock().
+float4 GetKernelCentersBlockRemainder(
+    uint patchKernelCentersStart, uint ld, uint k, uint p, uint numEntries)
+{
+    // Assuming p and k are in-bounds, there's no risk of reading past the end of the
+    // kernelCenters buffer, because we only read a single 32-bit element when accessing a block.
+    // For simplicity+efficiency, we assume that the padding in the buffer is already as-needed,
+    // and we don't transform it at all. Otherwise we would mask out all but the first numEntries
+    // of the set of returned entries.
+    return GetKernelCentersBlock(patchKernelCentersStart, ld, k, p);
+}
+
+// Retrieve a block of 4 contiguous entries in the poseIndices buffer.
+// Handles any decompression needed to unpack the data into 32-bit uints.
+// NOTE: p should be a multiple of 4.
+uint4 GetPoseIndicesBlock(uint patchPoseIndicesStart, uint p)
+{
+    // poseIndices are compressed into two ushorts per entry.
+    return Load4CompressedUint16s(poseIndices, patchPoseIndicesStart, p);
+}
+
+// Same as GetPoseIndicesBlock(), but meant to be used at the end of a buffer when there are only
+// numEntries values left in the buffer.
+// Handles any decompression necessary while ensuring that no buffer overruns occur from attempting
+// to read more than numEntries in order to fill the block. This additional logic makes it strictly
+// slower than GetPoseIndicesBlock().
+uint4 GetPoseIndicesBlockRemainder(uint patchPoseIndicesStart, uint p, uint numEntries)
+{
+    uint2 uncompressed0 = LoadCompressedUint16s(poseIndices, patchPoseIndicesStart, p);
+    if (numEntries <= 2)
+    {
+        return uint4(uncompressed0, 0, 0);
+    }
+    else
+    {
+        uint2 uncompressed2 = LoadCompressedUint16s(poseIndices, patchPoseIndicesStart, p + 2);
+        return uint4(uncompressed0, uncompressed2);
+    }
+}
+
+[numthreads(64, 1, 1)] void KernelFunctions(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint threadIdx = dtid.x;
+
+    if (threadIdx >= totalNumKernels) return;
+
+    // Retrieve patch index that this element belongs to.
+    uint patchIdx = kernelPatchMap[threadIdx];
+
+    // Read the kernel data for this element from its patch.
+    KernelFunctionIndices patchStarts = patchKernelFunctionStartIndices[patchIdx];
+    KernelFunctionIndices patchEnds = patchKernelFunctionStartIndices[patchIdx + 1];
+    uint kernelCentersLD = patchKernelCentersStrides[patchIdx];
+    uint phiStart = patchPhiStartIndices[patchIdx];
+
+    // Reconstruct index of current kernel within its patch.
+    uint kernelIdx = threadIdx - patchStarts.kernelNum;
+
+    // Compute distance from restricted weighted pose to current kernel center.
+    float r = 0.0;
+    uint numPoseDims = patchEnds.pose - patchStarts.pose; // ** okay if zero-padded?
+    uint poseDimIdx = 0;
+    if (numPoseDims >= 4)
+    {
+        // We process 4 elements at a time to work more nicely with our compression scheme, which
+        // compresses four entries of the kernelCenters data into each 32-bit buffer element.
+        // Even if we use an uncompressed scheme instead, processing 4 elements at a time allows
+        // for more explicit SIMD.
+        float4 rVec = { 0.0, 0.0, 0.0, 0.0 }; // Accumulate dot product, vectorized
+        for (; poseDimIdx <= numPoseDims - 4; poseDimIdx += 4)
+        {
+            // Unpack the current block of 4 kernel center values.
+            float4 k =
+                GetKernelCentersBlock(patchStarts.kernelCenters, kernelCentersLD, kernelIdx, poseDimIdx);
+
+            // Restrict pose vector according to poseIndices
+            uint4 poseIdx = GetPoseIndicesBlock(patchStarts.poseIndices, poseDimIdx);
+            float4 p = {
+                pose[poseIdx[0]],
+                pose[poseIdx[1]],
+                pose[poseIdx[2]],
+                pose[poseIdx[3]],
+            };
+
+            // Absolute index of current pose element data (poseScale, poseShift, etc.)
+            int pIdx = patchStarts.pose + poseDimIdx;
+            float4 pScale = LoadFloat4Block(poseScale, pIdx);
+            float4 pShift = LoadFloat4Block(poseShift, pIdx);
+            p = p * pScale + pShift; // Weight and shift pose vector
+
+            float4 kScale = LoadFloat4Block(kernelScale, pIdx);
+            float4 d = p - kScale * k; // Euclidean distance between pose vector and kernel center
+            rVec += d * d;
+        }
+        // Finalize accumulation of dot product into a single float
+        r = HorizontalSum(rVec);
+    }
+
+    // Deal wth any remaining elements that didn't fit into a block of 4
+    if (poseDimIdx < numPoseDims)
+    {
+        uint remainder = numPoseDims - poseDimIdx;
+
+        float4 k = GetKernelCentersBlockRemainder(patchStarts.kernelCenters, kernelCentersLD, kernelIdx,
+            poseDimIdx, remainder);
+        int4 poseIdx = GetPoseIndicesBlockRemainder(patchStarts.poseIndices, poseDimIdx, remainder);
+
+        for (uint j = 0; j < remainder; ++j)
+        {
+            uint pIdx = patchStarts.pose + poseDimIdx + j;
+            float p = pose[poseIdx[j]] * poseScale[pIdx] + poseShift[pIdx];
+            float d = p - kernelScale[pIdx] * k[j];
+            r += d * d;
+        }
+    }
+
+    // Sqrt to get euclidean distance, then scale to get final Phi value.
+    float phi_k = sqrt(r) * scalePerKernel[patchStarts.scalePerKernel + kernelIdx];
+    phi[phiStart + kernelIdx] = phi_k;
+}
+
+
+//
+// RBF Interpolation
+//
+
+#pragma kernel RBFInterpolate
+
+// Dynamic inputs
+StructuredBuffer<float> phiIn; // ** zero-padding okay
+
+// Static inputs:
+uint totalNumRBFOutDims;
+StructuredBuffer<uint> rbfPatchMap;
+
+// The start indices buffers are separated so they can be shared with other compute kernels
+StructuredBuffer<uint> patchPhiInStartIndices;
+StructuredBuffer<uint> patchRBFCoeffsStartIndices;
+StructuredBuffer<uint> patchRBFOutStartIndices;
+
+StructuredBuffer<int> rbfCoeffs; // Each int is two packed shorts, from same row adjacent columns
+StructuredBuffer<uint> patchRBFCoeffsStrides;
+StructuredBuffer<float> scalePerRBFCoeff; // 1-to-1 correspondence with elements of rbfOut
+
+// Outputs:
+RWStructuredBuffer<float> rbfOut;
+
+// Retrieve a block of 2 entries from the same row of the rbfCoeffs matrix.
+// Handles any decompression necessary to unpack the data into floats.
+// NOTE: col must be a multiple of 2
+float2 GetRBFCoeffsBlock(uint patchRBFCoeffsStart, uint ld, uint row, uint col)
+{
+    return LoadCompressedInt16MatrixRowBlock(rbfCoeffs, patchRBFCoeffsStart, ld, row, col);
+}
+
+float2
+GetRBFCoeffsBlockRemainder(uint patchRBFCoeffsStart, uint ld, uint row, uint col, uint remainder)
+{
+    // Since we're only returning a single compressed entry from the buffer, no need to mask out
+    // anything.
+    return GetRBFCoeffsBlock(patchRBFCoeffsStart, ld, row, col);
+}
+
+[numthreads(64, 1, 1)] void RBFInterpolate(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint threadIdx = dtid.x;
+    if (threadIdx >= totalNumRBFOutDims) return;
+
+    uint patchIdx = rbfPatchMap[threadIdx];
+
+    uint rbfCoeffsStart = patchRBFCoeffsStartIndices[patchIdx];
+    uint rbfOutStart = patchRBFOutStartIndices[patchIdx];
+
+    uint row = threadIdx - rbfOutStart; // ** Requires no padding in rbfOut!!!
+    uint rbfCoeffsLD = patchRBFCoeffsStrides[patchIdx];
+
+    uint phiStart = patchPhiInStartIndices[patchIdx];
+    uint numCols = patchPhiInStartIndices[patchIdx + 1] - phiStart; // ** okay if zero-padded
+
+    float d = 0.0;
+    uint col = 0;
+    if (numCols >= 2)
+    {
+        float2 dVec = { 0, 0 };
+        for (; col < numCols; col += 2)
+        {
+            float2 rbfCoeffsBlock = GetRBFCoeffsBlock(rbfCoeffsStart, rbfCoeffsLD, row, col);
+            float2 phiBlock = LoadFloat2Block(phiIn, phiStart + col);
+            dVec += rbfCoeffsBlock * phiBlock;
+        }
+        d = HorizontalSum(dVec);
+    }
+    if (col < numCols)
+    {
+        uint remainder = numCols - col;
+        float2 rbfCoeffsBlock =
+            GetRBFCoeffsBlockRemainder(rbfCoeffsStart, rbfCoeffsLD, row, col, remainder);
+        for (uint j = 0; j < remainder; ++j)
+        {
+            d += rbfCoeffsBlock[j] * phiIn[phiStart + col + j];
+        }
+    }
+
+    rbfOut[threadIdx] = d * scalePerRBFCoeff[threadIdx];
+}
+
+
+//
+// Tensor Skinning
+//
+
+#pragma kernel TensorSkinning
+
+struct TensorSkinningIndices
+{
+    uint reducedBasis;
+    uint displacements;
+};
+
+StructuredBuffer<float> subspaceCoeffs;
+
+uint totalDisplacements;
+StructuredBuffer<uint> displacementPatchMap;
+
+// NOTE: Indexes into floats, not float3s! So it can be shared with kernel above.
+StructuredBuffer<uint> patchSubspaceStartIndices;
+StructuredBuffer<TensorSkinningIndices> patchTSStartIndices;
+
+StructuredBuffer<int> reducedBasis; // Each int is 4 packed sbytes, same row adjacent columns
+StructuredBuffer<uint> patchReducedBasisStrides;
+StructuredBuffer<float> scalePerVertex; // ** NO PADDING
+
+RWStructuredBuffer<float3> displacementsOut; // ** NO INTERNAL PADDING
+
+// Retrieve a block of 4 contiguous entries in the reducedBasis data buffer.
+// Handles any decompression necessary to unpack the data into floats.
+// NOTE: blockStartIdx must be a multiple of 4.
+float4 GetReducedBasisBlock(uint patchReducedBasisStart, uint ld, uint row, uint col)
+{
+    return LoadCompressedInt8MatrixRowBlock(reducedBasis, patchReducedBasisStart, ld, row, col);
+}
+
+float3 CalculateTensorBlock4(uint reducedBasisStart,
+    uint reducedBasisLD,
+    uint subspaceStart,
+    uint row,
+    uint col,
+    uint count)
+{
+    // Calculate tensor skinning for up to 4, or at most count, number of entries. Note,
+    // compiler will unroll loops for constant 'count'.
+
+    float3 dVert = { 0, 0, 0 };
+
+    // GetReducedBasisBlock() always reads 4 entries, but gracefully handles less than 4.
+    float4 reducedBasisBlock =
+        GetReducedBasisBlock(reducedBasisStart, reducedBasisLD, row, col);
+
+    for (uint j = 0; j < count; ++j)
+    {
+        uint index = (subspaceStart + col + j) * 3;
+        dVert.x += reducedBasisBlock[j] * subspaceCoeffs[index + 0];
+        dVert.y += reducedBasisBlock[j] * subspaceCoeffs[index + 1];
+        dVert.z += reducedBasisBlock[j] * subspaceCoeffs[index + 2];
+    }
+    return dVert;
+}
+
+[numthreads(64, 1, 1)] void TensorSkinning(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint threadIdx = dtid.x;
+    if (threadIdx >= totalDisplacements) return;
+
+    uint patchIdx = displacementPatchMap[threadIdx];
+
+    TensorSkinningIndices patchStarts = patchTSStartIndices[patchIdx];
+
+    uint reducedBasisStart = patchStarts.reducedBasis;
+    uint reducedBasisLD = patchReducedBasisStrides[patchIdx];
+
+    uint row = threadIdx - patchStarts.displacements;
+
+    // NOTE: These indices are of floats, not float3s, so we have to convert!
+    uint subspaceStart = patchSubspaceStartIndices[patchIdx] / 3;
+    uint subspaceEnd = patchSubspaceStartIndices[patchIdx + 1] / 3;
+    uint numCols = subspaceEnd - subspaceStart;
+
+    float3 dVert = { 0, 0, 0 };
+
+    uint col = 0;
+    for (col = 0; col < numCols; col += 4)
+    {
+        dVert += CalculateTensorBlock4(reducedBasisStart, reducedBasisLD, subspaceStart, row, col, 4);
+    }
+
+    if (col < numCols)
+    {
+        // Calculate any remaining (< 4) values.
+        uint remainder = numCols - col;
+        dVert += CalculateTensorBlock4(reducedBasisStart, reducedBasisLD, subspaceStart, row, col,
+            remainder);
+    }
+
+    // NOTE: We're storing displacements contiguously instead of strided, unlike on CPU
+    displacementsOut[threadIdx] = dVert * scalePerVertex[threadIdx];
+}
+
+
+//
+// Accumulate Displacements
+//
+
+#pragma kernel AccumulateDisplacements
+
+// Dynamic inputs:
+StructuredBuffer<float3> displacements;
+
+// Static inputs:
+uint totalNumVertices;
+StructuredBuffer<uint> displacementInfluences;
+StructuredBuffer<uint> influencesStarts;
+
+// In-Out:
+RWStructuredBuffer<float3> positions;
+
+[numthreads(64, 1, 1)] void AccumulateDisplacements(uint3 dtid
+    : SV_DispatchThreadID)
+{
+    uint vertIdx = dtid.x;
+
+    if (vertIdx >= totalNumVertices) return;
+
+    uint influencesStartIdx = influencesStarts[vertIdx];
+    uint influencesEndIdx = influencesStarts[vertIdx + 1];
+
+    float3 outPos = positions[vertIdx]; // Start from "rest" position
+    for (uint influenceIdx = influencesStartIdx; influenceIdx < influencesEndIdx; ++influenceIdx)
+    {
+        uint displacementIdx = displacementInfluences[influenceIdx];
+        outPos += displacements[displacementIdx];
+    }
+    positions[vertIdx] = outPos;
+}

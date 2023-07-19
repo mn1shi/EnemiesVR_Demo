@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 134e7e4da149a5843a6339462fa7588c
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies.unity
+  uploadId: 572188

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ee295b2c536784a4fbfd2ef28926b7e7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/MainSceneBakeSettings.lighting
+  uploadId: 572188

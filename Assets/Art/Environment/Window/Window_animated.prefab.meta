@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fdb9a043951951e49a3f984de21d40cc
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Art/Environment/Window/Window_animated.prefab
+  uploadId: 572188

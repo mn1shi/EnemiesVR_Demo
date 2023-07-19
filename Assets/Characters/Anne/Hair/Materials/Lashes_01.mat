@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Lashes_01
+  m_Shader: {fileID: -6465566751694194690, guid: 1dfcf021a4ef54940b5f670954d74175, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 1dfcf021a4ef54940b5f670954d74175, type: 3}
+  m_ModifiedSerializedProperties: 24
+  m_ValidKeywords:
+  - _ALPHATEST_ON
+  - _DISABLE_SSR_TRANSPARENT
+  m_InvalidKeywords:
+  - _HASDIFFUSETEXTURE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2475
+  stringTagMap:
+    MotionVector: User
+    RenderType: TransparentCutout
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - MOTIONVECTORS
+  - RayTracingPrepass
+  m_LockedProperties: _AO_Fade
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Diffuse:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Small_Hair_Mask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Smoothness:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AO_Fade: 0.652
+    - _AO_Start: -1
+    - _AO_from_density_Probe: 0
+    - _Alpha: 0.81
+    - _AlphaCutoffEnable: 1
+    - _Alpha_Pow: 1
+    - _Camera_Distance_Width_Thresold: 0
+    - _Color_Modification_Intensity: 0.261
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _Cuticle_Angle: -20.93
+    - _DebugUV: 0
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedNormalMode: 2
+    - _Gain_Variation_Amount: 0
+    - _HASDIFFUSETEXTURE: 1
+    - _Min_Coverage_Alpha: 0.1
+    - _Radial_Smoothness: 0.47
+    - _Root_Alpha: 0.809
+    - _Root_Reach: 0
+    - _Saturation: 1
+    - _Shadow_Clip: 0.8
+    - _Small_Alpha: 0
+    - _Small_Hair_Alpha_Pow: 0
+    - _Small_Hair_Max_Width: 2
+    - _Small_Hair_Shadow_Clip: 0
+    - _Small_Hair_Width_Pow: 1
+    - _Small_Root_Alpha: 0
+    - _Smoothness: 0.024
+    - _Smoothness_Gain: 0.224
+    - _Smoothness_Gain_Amount: 0
+    - _Smoothness_Gain_Frequence: 12
+    - _Strand_Shadow_Bias: 0.02
+    - _TWEAK_SMALL_HAIR: 0
+    - _Tint_Variation_Amount: 0
+    - _Tip_Alpha: 0.237
+    - _Tip_Reach: 0
+    - _USE_SMOOTHNESS_TEXTURE: 0
+    - _UseShadowThreshold: 1
+    - _Width: 4
+    - _WidthMin: 1
+    - _Width_Close_Range: 2
+    - _Width_Far_Range: 2
+    - _Width_Pow: 0
+    - _Width_Tip: 1
+    - _Width_Tip_Mult: 0
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 3
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _Global_Tint: {r: 0.6792453, g: 0.49989924, b: 0.3556426, a: 0}
+    - _Hair_Direction: {r: 0, g: 1, b: 0, a: 0}
+    - _Mask_Remap: {r: 0, g: 1, b: 0, a: 0}
+    - _Random_Gain_Variation: {r: 0.895, g: 0.7862617, b: 0.6022429, a: 1}
+    - _Random_Tint_Variation: {r: 0.8301887, g: 0.6453542, b: 0.6453542, a: 0}
+    - _Root_Color_Add: {r: 0, g: 0, b: 0, a: 0}
+    - _Root_Tint: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
+    - _Smoothness_Remap: {r: 0, g: 1, b: 0, a: 0}
+    - _Tip_Color_Add: {r: 0.639, g: 0.5018525, b: 0.28574145, a: 1}
+    - _Tip_Color_Tint: {r: 0.5943396, g: 0.52085793, b: 0.46762186, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &7589235273633152494
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 

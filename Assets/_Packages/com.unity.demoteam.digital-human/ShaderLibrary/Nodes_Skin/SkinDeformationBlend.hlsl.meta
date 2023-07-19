@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 44d298e460a0cc244ae044600c5647bb
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/_Packages/com.unity.demoteam.digital-human/ShaderLibrary/Nodes_Skin/SkinDeformationBlend.hlsl
+  uploadId: 572188

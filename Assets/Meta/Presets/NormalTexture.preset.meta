@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1d826a4c23450f946b19c20560595a1f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2655988077585873504
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Meta/Presets/NormalTexture.preset
+  uploadId: 572188

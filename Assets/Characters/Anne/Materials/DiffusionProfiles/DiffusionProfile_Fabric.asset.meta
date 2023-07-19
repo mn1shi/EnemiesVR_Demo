@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 24a8c87af83c4af49b3d4f77c3bc45c0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Characters/Anne/Materials/DiffusionProfiles/DiffusionProfile_Fabric.asset
+  uploadId: 572188

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5f68d6b55b7cd6144bb6cdbd4c9324fd
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248975
+  packageName: Enemies
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/Enemies/CharacterLightSetups/Character Lighting side 01.prefab
+  uploadId: 572188
